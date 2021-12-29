@@ -24,8 +24,6 @@ export class KeepApp extends React.Component {
     return (
       <div>
         {/* <NotesHeader onSetFilter={this.onSetFilter} /> */}
-
-        {/* <MailFilter /> */}
         {/* <NotesList notes={notes} /> */}
       </div>
     );

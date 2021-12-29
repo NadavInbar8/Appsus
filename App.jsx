@@ -2,6 +2,7 @@
 
 import { BookApp } from './apps/book/BookApp.jsx';
 import { MailApp } from './pages/MailApp.jsx';
+import { MailDetails } from './apps/mail/pages/MailDetails.jsx';
 import { KeepApp } from './pages/KeepApp.jsx';
 import { UserMsg } from './components/UserMsg.jsx';
 import { AppsusHome } from './pages/AppsusHome.jsx';
@@ -27,6 +28,7 @@ export function App() {
         <main>
           <Switch>
             <Route component={BookApp} path='/book' />
+            <Route component={MailDetails} path='/mail/:mailId' />
             <Route component={MailApp} path='/mail' />
             <Route component={KeepApp} path='/keep' />
             <Route component={AppsusAbout} path='/about' />
