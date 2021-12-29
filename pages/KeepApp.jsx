@@ -23,10 +23,10 @@ export class KeepApp extends React.Component {
     const { notes } = this.state;
     return (
       <div>
-        <NotesHeader onSetFilter={this.onSetFilter} />
+        {/* <NotesHeader onSetFilter={this.onSetFilter} /> */}
 
         {/* <MailFilter /> */}
-        <NotesList notes={notes} />
+        {/* <NotesList notes={notes} /> */}
       </div>
     );
   }

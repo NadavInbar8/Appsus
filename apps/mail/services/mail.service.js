@@ -1,5 +1,4 @@
-import { storageService } from '../../../services/storage.service.js';
-import { utilService } from '../../../services/util.service.js';
+import { storageService } from '../../../js/services/storage.service.js';
 
 export const mailService = {
   query,
@@ -17,7 +16,7 @@ function query(filterBy = null) {
   if (!mails || !mails.length) {
     console.log('from server');
     return axios
-      .get('./js/apps/mail/mailServices/emails.json')
+      .get('apps/mail/services/emails.json')
       .then((res) => {
         console.log(res.data);
         _saveMailsToStorage(res.data);

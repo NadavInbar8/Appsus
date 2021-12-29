@@ -1,4 +1,4 @@
-import { mailService } from '../mailServices/mail.service.js';
+import { mailService } from '../services/mail.service.js';
 
 export class MailHeader extends React.Component {
   state = {
