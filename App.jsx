@@ -1,11 +1,18 @@
+///////////   Imports ///////////
+
 import { BookApp } from './js/apps/book/BookApp.jsx';
 import { MailApp } from './js/apps/mail/MailApp.jsx';
 import { KeepApp } from './js/apps/keep/KeepApp.jsx';
 import { UserMsg } from './js/cmps/UserMsg.jsx';
 import { AppsusHome } from './js/pages/AppsusHome.jsx';
 import { AppsusAbout } from './js/pages/AppsusAbout.jsx';
+
+/////////// React Router ///////////
+
 const Router = ReactRouterDOM.HashRouter;
 const { Route, Switch } = ReactRouterDOM;
+
+/////////// App ///////////
 
 export function App() {
   return (
