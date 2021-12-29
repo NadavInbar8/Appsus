@@ -6,6 +6,8 @@ import { KeepApp } from './js/apps/keep/KeepApp.jsx';
 import { UserMsg } from './js/cmps/UserMsg.jsx';
 import { AppsusHome } from './js/pages/AppsusHome.jsx';
 import { AppsusAbout } from './js/pages/AppsusAbout.jsx';
+import { AppsusHeader } from './js/cmps/AppsusHeader.jsx';
+import { AppsusFooter } from './js/cmps/AppsusFooter.jsx';
 
 /////////// React Router ///////////
 
@@ -20,7 +22,7 @@ export function App() {
       <section className='app'>
         <UserMsg />
 
-        {/* <Header /> */}
+        <AppsusHeader />
 
         <main>
           <Switch>
@@ -32,7 +34,7 @@ export function App() {
           </Switch>
         </main>
 
-        {/* <Footer /> */}
+        <AppsusFooter />
       </section>
     </Router>
   );

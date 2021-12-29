@@ -1,0 +1,27 @@
+.header {
+  margin: 0;
+  height: 10vh;
+  background-color: aqua;
+}
+.main-header {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  background-color: aqua;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.apps-menu img {
+  height: 40px;
+}
+
+.nav-modal {
+  height: 250px;
+  width: 250px;
+  background-color: rgb(255, 187, 0);
+  position: absolute;
+  left: 75%;
+  top: 5%;
+  z-index: 2;
+}
