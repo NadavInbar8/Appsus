@@ -9,14 +9,11 @@ export class MailHeader extends React.Component {
   handleChange = ({ target }) => {
     const field = target.name;
     const value = target.value;
-    // console.log(field, value);
     this.setState((prevState) => ({ ...prevState, [field]: value }));
   };
 
   getFitler = (ev) => {
     ev.preventDefault();
-    console.log(this.state);
-
     this.props.onSetFilter(this.state);
   };
 
@@ -24,7 +21,7 @@ export class MailHeader extends React.Component {
     const { mailSearch, filter } = this.state;
     return (
       <div className='mail-header'>
-        <div className='mail-main-header'>
+        <div className='mail-main-header flex'>
           <div className='mail-logo'>
             <img src='./assets/SVG/mail.svg' alt='' />
           </div>
@@ -54,7 +51,7 @@ export class MailHeader extends React.Component {
               <button>submit</button>
             </form>
           </div>
-          <div className='new-mail'> new mail</div>
+          <div className='new-mail'>hello</div>
         </div>
       </div>
     );

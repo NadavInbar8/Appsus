@@ -10,3 +10,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.clean-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.clean-link {
+  color: inherit;
+  text-decoration: none;
+}

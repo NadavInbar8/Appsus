@@ -1,6 +1,7 @@
 import { mailService } from '../apps/mail/services/mail.service.js';
 import { MailList } from '../apps/mail/componets/MailList.jsx';
 import { MailHeader } from '../apps/mail/componets/MailHeader.jsx';
+import { MailFolderList } from '../apps/mail/componets/MailFolderList.jsx';
 
 export class MailApp extends React.Component {
   state = {
@@ -26,11 +27,10 @@ export class MailApp extends React.Component {
   render() {
     const { mails } = this.state;
     return (
-      <div>
+      <div className='mail-app flex'>
         <MailHeader onSetFilter={this.onSetFilter} />
-
-        {/* <MailFilter /> */}
-        <MailList mails={mails} />
+        <MailFolderList />
+        <MailList loadMails={this.loadMails} mails={mails} />
       </div>
     );
   }

@@ -37,23 +37,14 @@ function query(filterBy = null) {
 }
 
 function _getFilteredMails(mails, filterBy) {
-  console.log(mails);
-  console.log(filterBy);
   let { filter } = filterBy;
   let { mailSearch } = filterBy;
-  console.log(filter);
   if (filter === '') return mails;
   let MailsFiltered = mails.filter((mail) => {
-    console.log('filter', filter);
-    console.log(mail.filter);
     return mail[filter].includes(mailSearch);
   });
 
   return MailsFiltered;
-
-  // return mails.filter((mail) => {
-  //   return mail.subject.includes(subject);
-  // });
 }
 
 function _saveMailsToStorage(mails) {

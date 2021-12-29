@@ -1,0 +1,36 @@
+.mail-preview {
+  border-bottom: 1px solid rgb(165, 165, 165);
+  align-items: center;
+}
+
+.mail-preview:first-child {
+  border-top: 1px solid rgb(165, 165, 165);
+}
+
+.mail-preview > * {
+  padding: 8px;
+
+  border-right: 1px solid rgb(165, 165, 165);
+}
+
+.star-preview {
+  width: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.from-preview {
+  width: 10%;
+}
+
+.subject-preview {
+  width: 15%;
+}
+.text-preview {
+  width: 72%;
+}
+
+.bold {
+  font-weight: bold;
+}
