@@ -54,6 +54,7 @@ export class MailHeader extends React.Component {
               <button>submit</button>
             </form>
           </div>
+          <div className='new-mail'> new mail</div>
         </div>
       </div>
     );
