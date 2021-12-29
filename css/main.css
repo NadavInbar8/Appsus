@@ -9,3 +9,9 @@
 body {
   margin: 0 auto;
 }
+:root {
+  --cp1: #f3f0d7;
+  --cp2: #cee5d0;
+  --cp3: #fed2aa;
+  --cp4: #ffbf86;
+}
