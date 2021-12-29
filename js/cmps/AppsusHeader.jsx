@@ -13,7 +13,14 @@ export class AppsusHeader extends React.Component {
     return (
       <div className='header'>
         <div className='main-header flex'>
-          <div className='logo'>nadav and odeds project</div>
+          <div className='logo'>
+            <img
+              width='auto'
+              height='auto'
+              src='./assets/SVG/logo.svg'
+              alt='logoSvg'
+            />
+          </div>
           <div className='apps-menu'>
             <img
               onClick={this.toggleModal}
