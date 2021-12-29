@@ -1,13 +1,13 @@
 ///////////   Imports ///////////
 
-import { BookApp } from './js/apps/book/BookApp.jsx';
-import { MailApp } from './js/apps/mail/MailApp.jsx';
-import { KeepApp } from './js/apps/keep/KeepApp.jsx';
-import { UserMsg } from './js/cmps/UserMsg.jsx';
-import { AppsusHome } from './js/pages/AppsusHome.jsx';
-import { AppsusAbout } from './js/pages/AppsusAbout.jsx';
-import { AppsusHeader } from './js/cmps/AppsusHeader.jsx';
-import { AppsusFooter } from './js/cmps/AppsusFooter.jsx';
+import { BookApp } from './apps/book/BookApp.jsx';
+import { MailApp } from './pages/MailApp.jsx';
+import { KeepApp } from './pages/KeepApp.jsx';
+import { UserMsg } from './components/UserMsg.jsx';
+import { AppsusHome } from './pages/AppsusHome.jsx';
+import { AppsusAbout } from './pages/AppsusAbout.jsx';
+import { AppsusHeader } from './components/AppsusHeader.jsx';
+import { AppsusFooter } from './components/AppsusFooter.jsx';
 
 /////////// React Router ///////////
 

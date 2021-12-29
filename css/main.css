@@ -1,6 +1,6 @@
-@import './cmps/app-header.css';
-@import './cmps/app-footer.css';
-@import '../css/apps/mail-css/mail.css';
+@import './components/app-header.css';
+@import './components/app-footer.css';
+@import '../apps/mail/css/mail.css';
 @import './parts/helpers.css';
 * {
   box-sizing: border-box;
