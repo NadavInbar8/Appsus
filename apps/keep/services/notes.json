@@ -11,7 +11,7 @@
     "id": "n102",
     "type": "note-img",
     "info": {
-      "url": "http://some-img/me",
+      "url": "https://picsum.photos/200/300",
       "title": "Bobi and Me"
     },
     "style": {
@@ -27,6 +27,77 @@
         { "txt": "Driving liscence", "doneAt": null },
         { "txt": "Coding power", "doneAt": 187111111 }
       ]
+    }
+  },
+  {
+    "id": "n104",
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "txt": "Fullstack Me Baby!"
+    }
+  },
+  {
+    "id": "n105",
+    "type": "note-img",
+    "info": {
+      "url": "https://picsum.photos/200/300",
+      "title": "Bobi and Me"
+    },
+    "style": {
+      "backgroundColor": "#00d"
+    }
+  },
+  {
+    "id": "n106",
+    "type": "note-todos",
+    "info": {
+      "label": "Get my stuff together",
+      "todos": [
+        { "txt": "Driving liscence", "doneAt": null },
+        { "txt": "Coding power", "doneAt": 187111111 }
+      ]
+    }
+  },
+  {
+    "id": "n107",
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "txt": "Fullstack Me Baby!"
+    }
+  },
+  {
+    "id": "n108",
+    "type": "note-img",
+    "info": {
+      "url": "https://picsum.photos/200/300",
+      "title": "Bobi and Me"
+    },
+    "style": {
+      "backgroundColor": "#00d"
+    }
+  },
+  {
+    "id": "n109",
+    "type": "note-todos",
+    "info": {
+      "label": "Get my stuff together",
+      "todos": [
+        { "txt": "Driving liscence", "doneAt": null },
+        { "txt": "Coding power", "doneAt": 187111111 }
+      ]
+    }
+  },
+  {
+    "id": "n110",
+    "type": "note-video",
+    "info": {
+      "url": "https://www.youtube.com/embed/LHAgUebnlXI",
+      "title": "Bobi and Me"
+    },
+    "style": {
+      "backgroundColor": "#00d"
     }
   }
 ]

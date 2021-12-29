@@ -1,0 +1,28 @@
+.note-list {
+  background-color: rgb(255, 224, 224);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.note-preview {
+  margin-top: 20px;
+  color: white;
+  text-align: center;
+  border: black solid 2px;
+  border-radius: 15px;
+}
+.img-note img {
+  border-radius: 15px;
+  margin: 15px;
+}
+
+.video-note {
+}
+.txt-note {
+}
+
+.todos-note {
+  text-align: left;
+}
