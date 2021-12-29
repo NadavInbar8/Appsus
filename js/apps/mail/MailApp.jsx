@@ -1,8 +1,15 @@
+import { mailService } from './mailServices/mail.service.js';
+import { MailList } from './mailComponets/MailList.jsx';
+
 export class MailApp extends React.Component {
   state = {
     mails: [],
     filterBy: null,
   };
+
+  componentDidMount() {
+    this.loadMails();
+  }
 
   loadMails = () => {
     const { filterBy } = this.state;
@@ -12,6 +19,7 @@ export class MailApp extends React.Component {
   };
 
   render() {
+    const { mails } = this.state;
     return (
       <div>
         <h1>mailApp</h1>
