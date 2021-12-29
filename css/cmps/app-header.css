@@ -17,6 +17,7 @@
 }
 
 .nav-modal {
+  text-align: center;
   height: 250px;
   width: 250px;
   background-color: rgb(255, 187, 0);
@@ -24,4 +25,10 @@
   left: 75%;
   top: 5%;
   z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+}
+.nav-modal img {
+  margin-top: 10px;
+  height: 60px;
 }

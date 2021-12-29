@@ -24,11 +24,21 @@ export class AppsusHeader extends React.Component {
         </div>
         {this.state.isModalShown && (
           <div className='nav-modal'>
-            <NavLink to='/mail'>mail</NavLink>
-            <NavLink to='/keep'>keep</NavLink>
-            <NavLink to='/book'>books</NavLink>
-            <NavLink to='/about'>about</NavLink>
-            <NavLink to='/'>home</NavLink>
+            <NavLink to='/mail'>
+              <img src='./assets/SVG/mail.svg' alt='' />
+            </NavLink>
+            <NavLink to='/keep'>
+              <img src='./assets/SVG/keep.svg' alt='' />
+            </NavLink>
+            <NavLink to='/book'>
+              <img src='./assets/SVG/book.svg' alt='' />
+            </NavLink>
+            <NavLink to='/about'>
+              <img src='./assets/SVG/about.svg' alt='' />
+            </NavLink>
+            <NavLink to='/'>
+              <img src='./assets/SVG/home.svg' alt='' />
+            </NavLink>
           </div>
         )}
       </div>
