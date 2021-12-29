@@ -2,10 +2,14 @@ import { storageService } from '../../../services/storage.service.js';
 import { utilService } from '../../../services/util.service.js';
 
 export const mailService = {
-  query: query,
+  query,
 };
 
 const KEY = 'mailsDb';
+const loggedinUser = {
+  email: 'user@appsus.com',
+  fullname: 'Mahatma Appsus',
+};
 
 function query(filterBy = null) {
   let mails = _loadMailsFromStorage();
@@ -34,7 +38,7 @@ function query(filterBy = null) {
 }
 
 function getFilteredMails(mails, filterBy) {
-  let { subject, isRead, star, labels, body } = filterBy;
+  let { subject, isRead, star, labels, body, from } = filterBy;
   return mails.filter((mail) => {
     return mail.subject.includes(subject);
   });

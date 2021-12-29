@@ -7,7 +7,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "kim"
   },
   {
     "id": "e103",
@@ -17,7 +18,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "danny"
   },
   {
     "id": "e104",
@@ -27,7 +29,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "oded"
   },
   {
     "id": "e105",
@@ -37,7 +40,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "nadav"
   },
   {
     "id": "e106",
@@ -47,7 +51,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "idan"
   },
   {
     "id": "e107",
@@ -57,7 +62,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "ram"
   },
   {
     "id": "e108",
@@ -67,7 +73,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "tom"
   },
   {
     "id": "e109",
@@ -77,7 +84,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "yahel"
   },
   {
     "id": "e110",
@@ -87,7 +95,8 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "yahel"
   },
   {
     "id": "e111",
@@ -97,6 +106,7 @@
     "sentAt": 1551133930594,
     "star": false,
     "labels": [],
-    "to": "momo@momo.com"
+    "to": "momo@momo.com",
+    "from": "kim"
   }
 ]
