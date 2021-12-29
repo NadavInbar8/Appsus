@@ -10,7 +10,7 @@ const loggedinUser = {
   email: 'user@appsus.com',
   fullname: 'Mahatma Appsus',
 };
-
+// {mailSearch: ';lkj', filter: ''}
 function query(filterBy = null) {
   let mails = _loadMailsFromStorage();
 
@@ -37,11 +37,24 @@ function query(filterBy = null) {
   }
 }
 
-function getFilteredMails(mails, filterBy) {
-  let { subject, isRead, star, labels, body, from } = filterBy;
-  return mails.filter((mail) => {
-    return mail.subject.includes(subject);
+function _getFilteredMails(mails, filterBy) {
+  console.log(mails);
+  console.log(filterBy);
+  let { filter } = filterBy;
+  let { mailSearch } = filterBy;
+  console.log(filter);
+  if (filter === '') return mails;
+  let MailsFiltered = mails.filter((mail) => {
+    console.log('filter', filter);
+    console.log(mail.filter);
+    return mail[filter].includes(mailSearch);
   });
+
+  return MailsFiltered;
+
+  // return mails.filter((mail) => {
+  //   return mail.subject.includes(subject);
+  // });
 }
 
 function _saveMailsToStorage(mails) {

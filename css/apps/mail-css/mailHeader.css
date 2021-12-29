@@ -1,0 +1,12 @@
+.mail-header {
+  height: 8vh;
+  background-color: rgb(229, 143, 143);
+}
+.mail-main-header {
+  width: 90%;
+  margin: auto;
+}
+
+.mail-header img {
+  height: 50px;
+}

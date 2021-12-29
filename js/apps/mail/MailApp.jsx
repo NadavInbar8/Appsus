@@ -1,5 +1,6 @@
 import { mailService } from './mailServices/mail.service.js';
 import { MailList } from './mailComponets/MailList.jsx';
+import { MailHeader } from './mailComponets/MailHeader.jsx';
 
 export class MailApp extends React.Component {
   state = {
@@ -17,12 +18,17 @@ export class MailApp extends React.Component {
       this.setState({ mails });
     });
   };
+  onSetFilter = (filterBy) => {
+    console.log(filterBy);
+    this.setState({ filterBy }, this.loadMails);
+  };
 
   render() {
     const { mails } = this.state;
     return (
       <div>
-        <h1>mailApp</h1>
+        <MailHeader onSetFilter={this.onSetFilter} />
+
         {/* <MailFilter /> */}
         <MailList mails={mails} />
       </div>
