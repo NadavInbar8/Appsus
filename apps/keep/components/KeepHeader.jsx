@@ -1,4 +1,4 @@
-import { NoteService } from '../services/note.service.js';
+// import { NoteService } from '../services/note.service.js';
 export class KeepHeader extends React.Component {
   state = {
     type: 'all',
