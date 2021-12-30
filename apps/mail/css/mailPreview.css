@@ -1,6 +1,14 @@
 .mail-preview {
   border-bottom: 1px solid rgb(165, 165, 165);
   align-items: center;
+  box-sizing: border-box;
+  max-height: 55px;
+  width: 100%;
+  position: relative;
+}
+
+.mail-preview > * {
+  box-sizing: border-box;
 }
 
 .mail-preview:first-child {
@@ -33,4 +41,14 @@
 
 .bold {
   font-weight: bold;
+}
+
+.delete {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+.mail-preview:hover .delete {
+  display: flex;
+  transform: scale(1.1);
 }

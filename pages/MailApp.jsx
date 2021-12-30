@@ -9,6 +9,7 @@ export class MailApp extends React.Component {
     mails: [],
     filterBy: null,
     isNewMail: false,
+    folderFilter: 0,
   };
 
   componentDidMount() {
@@ -16,14 +17,14 @@ export class MailApp extends React.Component {
   }
 
   closeMails(mails) {
-    mails.map((mail) => {
+    mails.forEach((mail) => {
       mail.isOpen = false;
     });
   }
 
   loadMails = () => {
-    const { filterBy } = this.state;
-    mailService.query(filterBy).then((mails) => {
+    const { filterBy, folderFilter } = this.state;
+    mailService.query(filterBy, folderFilter).then((mails) => {
       this.closeMails(mails);
       this.setState({ mails });
     });
@@ -31,6 +32,11 @@ export class MailApp extends React.Component {
   onSetFilter = (filterBy) => {
     console.log(filterBy);
     this.setState({ filterBy }, this.loadMails);
+  };
+
+  onFolderFilter = (folderFilter) => {
+    console.log(folderFilter);
+    this.setState({ folderFilter: folderFilter }, this.loadMails);
   };
 
   togglePreview(mails, mailId) {
@@ -42,6 +48,13 @@ export class MailApp extends React.Component {
       }
     });
   }
+
+  onMoveToTrash = (mails, mailId) => {
+    mails.forEach((mail) => {
+      if (mail.id === mailId) mail.isTrash = true;
+    });
+    mailService.saveMails(mails);
+  };
 
   showUnreadCount(mails) {
     let unreadCount = 0;
@@ -55,7 +68,7 @@ export class MailApp extends React.Component {
 
   composeMail = () => {
     console.log(this.state.isNewMail);
-    this.setState({ isNewMail: true });
+    this.setState({ isNewMail: true }, this.loadMails);
   };
 
   closeComposeMail = () => {
@@ -70,14 +83,20 @@ export class MailApp extends React.Component {
           composeMail={this.composeMail}
           onSetFilter={this.onSetFilter}
         />
-        {/* <button onClick={this.composeMail}>new mail</button> */}
-        <MailFolderList mails={mails} showUnreadCount={this.showUnreadCount} />
+
+        <MailFolderList
+          mails={mails}
+          onFolderFilter={this.onFolderFilter}
+          showUnreadCount={this.showUnreadCount}
+        />
 
         <MailList
           togglePreview={this.togglePreview}
+          onMoveToTrash={this.onMoveToTrash}
           loadMails={this.loadMails}
           mails={mails}
         />
+
         {isNewMail ? (
           <ComposeMail closeComposeMail={this.closeComposeMail} />
         ) : null}

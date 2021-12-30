@@ -10,7 +10,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "kim",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e103",
@@ -23,7 +24,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "danny",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e104",
@@ -36,7 +38,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "oded",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e105",
@@ -49,7 +52,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "nadav",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e106",
@@ -62,7 +66,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "idan",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e107",
@@ -75,7 +80,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "ram",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e108",
@@ -88,7 +94,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "tom",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e109",
@@ -101,7 +108,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "yahel",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e110",
@@ -114,7 +122,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "yahel",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e111",
@@ -127,7 +136,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "kim",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e112",
@@ -140,7 +150,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "kim",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e113",
@@ -153,7 +164,8 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "kim",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   },
   {
     "id": "e114",
@@ -166,6 +178,7 @@
     "fromEmail": "momo@momo.com",
     "to": "user@appsus.com",
     "from": "kim",
-    "isOpen": false
+    "isOpen": false,
+    "isTrash": false
   }
 ]

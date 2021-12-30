@@ -2,6 +2,7 @@
 @import './mailPreview.css';
 @import './mailHeader.css';
 @import './ComposeMail.css';
+@import './MailFolderList.css';
 .mail-app {
   flex-wrap: wrap;
 }
