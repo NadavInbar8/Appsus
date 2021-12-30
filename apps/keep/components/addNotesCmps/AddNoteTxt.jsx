@@ -22,7 +22,6 @@ export class AddNoteTxt extends React.Component {
     return (
       <div className='add-note-input'>
         <form onSubmit={this.submit} action=''>
-          <label htmlFor='addNote'>Add note:</label>
           <input
             type='text'
             onChange={this.handleChange}

@@ -1,0 +1,30 @@
+.keep-header {
+  height: 8vh;
+  background-color: #ffdab7;
+  display: flex;
+  justify-content: center;
+}
+
+.keep-header form {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  width: 40%;
+  justify-content: space-between;
+}
+
+.keep-header input {
+  width: 250px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  border-radius: 15px;
+}
+
+.keep-header select {
+  width: 250px;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+}

@@ -1,5 +1,8 @@
 [
   {
+    "style": {
+      "backgroundColor": "#CEE5D0"
+    },
     "id": "n101",
     "type": "note-txt",
     "isPinned": true,
@@ -15,10 +18,13 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#00d"
+      "backgroundColor": "#F3F0D7"
     }
   },
   {
+    "style": {
+      "backgroundColor": "#FED2AA"
+    },
     "id": "n103",
     "type": "note-todos",
     "info": {
@@ -30,6 +36,9 @@
     }
   },
   {
+    "style": {
+      "backgroundColor": "#CEE5D0"
+    },
     "id": "n104",
     "type": "note-txt",
     "isPinned": true,
@@ -45,10 +54,13 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#00d"
+      "backgroundColor": "#F3F0D7"
     }
   },
   {
+    "style": {
+      "backgroundColor": "#FED2AA"
+    },
     "id": "n106",
     "type": "note-todos",
     "info": {
@@ -60,6 +72,9 @@
     }
   },
   {
+    "style": {
+      "backgroundColor": "#CEE5D0"
+    },
     "id": "n107",
     "type": "note-txt",
     "isPinned": true,
@@ -75,10 +90,13 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#00d"
+      "backgroundColor": "#F3F0D7"
     }
   },
   {
+    "style": {
+      "backgroundColor": "#FED2AA"
+    },
     "id": "n109",
     "type": "note-todos",
     "info": {
@@ -97,7 +115,7 @@
       "title": "Bobi and Me"
     },
     "style": {
-      "backgroundColor": "#00d"
+      "backgroundColor": "#CEE5D0"
     }
   }
 ]

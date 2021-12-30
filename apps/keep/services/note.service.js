@@ -9,6 +9,9 @@ export const NoteService = {
   updateTodosNote,
   updateImgNote,
   updateVideoNote,
+  saveBackgroundColor,
+  sendToTop,
+  duplicateNote,
 };
 
 const KEY = 'NotesDB';
@@ -38,13 +41,15 @@ function query(filterBy = null) {
 
 function _getFilteredNotes(notes, filterBy) {
   console.log(filterBy);
-  if (filterBy.txt === '' && filterBy.type === '') return notes;
+  if (filterBy.txt === '' && filterBy.type === 'all') return notes;
   else if (filterBy.txt === '' && filterBy.type !== '')
     return notes.filter((note) => note.type === filterBy.type);
   else return filterByTxt(notes, filterBy);
 }
 
 function filterByTxt(notes, filterBy) {
+  if (filterBy.txt === '') return notes;
+
   let videoAndImgNotes = notes.filter(
     (note) => note.type === 'note-img' || note.type === 'note-video'
   );
@@ -66,6 +71,36 @@ function filterByTxt(notes, filterBy) {
 
   let finalFilter = filterVideosAndImgs.concat(filterTxtNotes, filterTodos);
   return finalFilter;
+}
+
+function sendToTop(noteId) {
+  console.log('onSend to top');
+  let notes = _loadNotesFromStorage();
+  let noteToTop = notes.find((note) => note.id === noteId);
+  let noteToTopIdx = notes.findIndex((note) => note.id === noteId);
+  notes.splice(noteToTopIdx, 1);
+  notes.unshift(noteToTop);
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
+function duplicateNote(noteId) {
+  let notes = _loadNotesFromStorage();
+  let currNote = notes.find((note) => note.id === noteId);
+  let noteToDuplicate = { ...currNote };
+  noteToDuplicate.id = utilService.makeId();
+  notes.unshift(noteToDuplicate);
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
+function saveBackgroundColor(noteId, color) {
+  let notes = _loadNotesFromStorage();
+  let noteToChange = notes.find((note) => note.id === noteId);
+  noteToChange.style.backgroundColor = color;
+
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
 }
 
 function getFilterTodosByTxt(todoNotes, filterBy) {
@@ -96,20 +131,6 @@ function addVideoNote(note) {
   let addedNote = createVideoNote(note);
   notes.unshift(addedNote);
   _saveNotesToStorage(notes);
-}
-
-function createVideoNote(note) {
-  return {
-    id: utilService.makeId(),
-    type: 'note-video',
-    info: {
-      url: note.url,
-      title: note.title,
-    },
-    style: {
-      backgroundColor: utilService.getRandomColor(),
-    },
-  };
 }
 
 function addImgNote(note) {
@@ -172,6 +193,19 @@ function createImgNote(note) {
     },
   };
 }
+function createVideoNote(note) {
+  return {
+    id: utilService.makeId(),
+    type: 'note-video',
+    info: {
+      url: note.url,
+      title: note.title,
+    },
+    style: {
+      backgroundColor: utilService.getRandomColor(),
+    },
+  };
+}
 
 function _addTxtNote(note) {
   let notes = _loadNotesFromStorage();
@@ -195,6 +229,9 @@ function createTodosNote(note) {
   });
 
   return {
+    style: {
+      backgroundColor: '#00d',
+    },
     id: utilService.makeId(),
     type: 'note-todos',
     info: { label: note.title, todos: TodosTxtAndTime },
@@ -206,6 +243,9 @@ function createTodosNote(note) {
 function createTxtNote(note) {
   const noteTxt = note.txt;
   return {
+    style: {
+      backgroundColor: '#00d',
+    },
     id: utilService.makeId(),
     type: 'note-txt',
     isPinned: false,

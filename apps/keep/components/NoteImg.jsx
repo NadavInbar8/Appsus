@@ -5,6 +5,7 @@ export class NoteImg extends React.Component {
     isNoteEdited: false,
     title: this.props.note.info.title,
     url: this.props.note.info.url,
+    backgroundColor: '#454545',
   };
 
   getColor = () => {
@@ -22,6 +23,11 @@ export class NoteImg extends React.Component {
     const field = target.name;
     console.log(value, field);
     this.setState((prevState) => ({ ...prevState, [field]: value }));
+    if (field === 'backgroundColor')
+      NoteService.saveBackgroundColor(
+        this.props.note.id,
+        this.state.backgroundColor
+      ).then(this.props.loadNotes());
   };
 
   editNote = () => {
@@ -38,51 +44,83 @@ export class NoteImg extends React.Component {
     );
   };
 
+  sendToTop = () => {
+    NoteService.sendToTop(this.props.note.id).then(this.props.loadNotes());
+  };
+
+  duplicateNote = () => {
+    NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
+  };
+
   render() {
-    const { isNoteEdited, title, url } = this.state;
+    const { isNoteEdited, title, url, backgroundColor } = this.state;
     return (
       <React.Fragment>
         <div
           onClick={this.editNote}
           className='note-preview img-note'
-          style={{ backgroundColor: this.getColor() }}
+          style={{ backgroundColor: this.props.note.style.backgroundColor }}
         >
-          {!isNoteEdited ? (
-            <React.Fragment>
-              <h2>{this.props.note.info.title}</h2>
-              <img src={this.props.note.info.url} alt='' />
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <form>
-                <label htmlFor='title'>update img title</label>
-                <input
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                  }}
-                  name='title'
-                  id='title'
-                  onChange={this.handleChange}
-                  value={title}
-                  type='text'
-                />
-
-                <label htmlFor='url'>update img url</label>
-                <input
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                  }}
-                  name='url'
-                  id='url'
-                  onChange={this.handleChange}
-                  value={url}
-                  type='text'
-                />
+          <div className='preview-content'>
+            {!isNoteEdited ? (
+              <React.Fragment>
+                <h2>{this.props.note.info.title}</h2>
                 <img src={this.props.note.info.url} alt='' />
-              </form>
-            </React.Fragment>
-          )}
-          <button onClick={this.onDeleteNote}>X</button>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <form>
+                  <label htmlFor='title'>update img title</label>
+                  <input
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                    }}
+                    name='title'
+                    id='title'
+                    onChange={this.handleChange}
+                    value={title}
+                    type='text'
+                  />
+
+                  <label htmlFor='url'>update img url</label>
+                  <input
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                    }}
+                    name='url'
+                    id='url'
+                    onChange={this.handleChange}
+                    value={url}
+                    type='text'
+                  />
+                  <img src={this.props.note.info.url} alt='' />
+                </form>
+              </React.Fragment>
+            )}
+            <div className='preview-buttons'>
+              <input
+                onChange={this.handleChange}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                }}
+                type='color'
+                value={backgroundColor}
+                name='backgroundColor'
+              />
+              <img className='paint-img' src='assets/SVG/paint.svg' alt='' />
+              <button onClick={this.sendToTop}>
+                <img src='assets/SVG/top.svg' alt='' />
+              </button>
+              <button onClick={this.duplicateNote}>
+                {' '}
+                <img src='assets/SVG/dup.svg' alt='' />
+              </button>
+              <button onClick={this.onDeleteNote}>
+                {' '}
+                <img src='assets/SVG/trash.svg' alt='' />
+              </button>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

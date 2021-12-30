@@ -1,44 +1,14 @@
-/* .note-list {
-  background-color: rgb(255, 224, 224);
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.note-preview {
-  margin-top: 20px;
-  color: white;
-  text-align: center;
-  border: black solid 2px;
-  border-radius: 15px;
-}
-
-.img-note img {
-  border-radius: 15px;
-  margin: 15px;
-}
-
-.video-note {
-}
-.txt-note {
-}
-
-.todos-note {
-  text-align: left;
-}
- */
-
 .note-list {
   column-count: 5;
+  gap: 10px;
 }
 
 .note-preview {
-  display: inline-block;
+  display: inline-flex;
   padding: 10px;
   margin: 10px;
-  width: 350px;
-  border: 1px solid black;
+  width: 385px;
+  border: 1px solid rgba(206, 205, 205, 0.521);
   border-radius: 8px;
   transition: 0.2s;
 }
@@ -49,12 +19,69 @@
   cursor: pointer;
 }
 
+.preview-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+.preview-buttons input {
+  opacity: 1;
+  position: absolute;
+  z-index: 1;
+  /* transform: translate(0%); */
+  opacity: 0;
+  height: 30px;
+  width: 30px;
+}
+.paint-img {
+  background-color: rgb(255, 249, 250);
+  border-radius: 5px;
+}
+.paint-img:hover {
+  background-color: rgb(99, 46, 54);
+  cursor: pointer;
+}
+
+.preview-buttons button {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(255, 249, 250);
+  transition: 0.2s;
+}
+
+.preview-buttons button:hover {
+  background-color: rgb(247, 214, 219);
+  cursor: pointer;
+}
+
+.preview-buttons button img {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+.img-note {
+  justify-content: center;
+}
+
+.video-note {
+  justify-content: center;
+}
 .img-note img {
   max-width: 300px;
 }
-.img-note {
+/* .img-note {
   max-height: 400px;
-}
+} */
 
 .txt-note {
   min-height: 100px;
@@ -62,6 +89,13 @@
 
 .note-preview {
 }
+
+img .top-svg {
+  /* position: absolute; */
+  height: 30px;
+  width: 30px;
+}
+
 .todos-note {
 }
 
