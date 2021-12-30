@@ -1,4 +1,4 @@
-import { NoteService } from '../../../js/services/note.service.js';
+import { NoteService } from '../../services/note.service.js';
 
 export class AddNoteImg extends React.Component {
   state = {
