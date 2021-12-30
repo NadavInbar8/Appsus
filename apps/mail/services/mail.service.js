@@ -1,13 +1,16 @@
 import { storageService } from '../../../js/services/storage.service.js';
+import { utilService } from '../../../js/services/util.service.js';
 
 export const mailService = {
   query,
+  saveMails,
+  sendNewMail,
 };
 
 const KEY = 'mailsDb';
 const loggedinUser = {
   email: 'user@appsus.com',
-  fullname: 'Mahatma Appsus',
+  fullname: 'Nadav Inbar and Oded Kovo',
 };
 // {mailSearch: ';lkj', filter: ''}
 function query(filterBy = null) {
@@ -36,6 +39,32 @@ function query(filterBy = null) {
   }
 }
 
+function sendNewMail(newMail) {
+  let mail = {
+    id: utilService.makeId(),
+    subject: newMail.subject,
+    body: newMail.text,
+    isRead: false,
+    sentAt: Date.now(),
+    star: false,
+    labels: [],
+    to: newMail.to,
+    from: loggedinUser.fullname,
+    isOpen: false,
+  };
+
+  let mails = query(null).then((queryMails) => {
+    queryMails.unshift(mail);
+    console.log(queryMails);
+    saveMails(queryMails);
+  });
+  console.log(mails);
+}
+
+function saveMails(mails) {
+  _saveMailsToStorage(mails);
+}
+
 function _getFilteredMails(mails, filterBy) {
   let { filter } = filterBy;
   let { mailSearch } = filterBy;
@@ -43,7 +72,6 @@ function _getFilteredMails(mails, filterBy) {
   let MailsFiltered = mails.filter((mail) => {
     return mail[filter].includes(mailSearch);
   });
-
   return MailsFiltered;
 }
 

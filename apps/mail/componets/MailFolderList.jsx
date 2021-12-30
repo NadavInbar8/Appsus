@@ -1,8 +1,4 @@
-export class MailFolderList extends React.Component {
-  state = {
-    filter: '',
-  };
-
+export function MailFolderList({ mails, showUnreadCount }) {
   // handleChange = ({ target }) => {
   //   const field = target.name;
   //   const value = target.value;
@@ -17,7 +13,15 @@ export class MailFolderList extends React.Component {
   //   this.props.onSetFilter(this.state);
   // };
 
-  render() {
-    return <div>hello world</div>;
-  }
+  let percent = 100;
+  percent = showUnreadCount(mails);
+
+  return (
+    <div>
+      <span>{percent}</span>
+      <meter min='0' max='100' value={percent}>
+        {percent}
+      </meter>
+    </div>
+  );
 }
