@@ -5,6 +5,7 @@ export class NoteImg extends React.Component {
     isNoteEdited: false,
     title: this.props.note.info.title,
     url: this.props.note.info.url,
+    backgroundColor: '#454545',
   };
 
   getColor = () => {
@@ -22,6 +23,11 @@ export class NoteImg extends React.Component {
     const field = target.name;
     console.log(value, field);
     this.setState((prevState) => ({ ...prevState, [field]: value }));
+    if (field === 'backgroundColor')
+      NoteService.saveBackgroundColor(
+        this.props.note.id,
+        this.state.backgroundColor
+      ).then(this.props.loadNotes());
   };
 
   editNote = () => {
@@ -38,14 +44,22 @@ export class NoteImg extends React.Component {
     );
   };
 
+  sendToTop = () => {
+    NoteService.sendToTop(this.props.note.id).then(this.props.loadNotes());
+  };
+
+  duplicateNote = () => {
+    NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
+  };
+
   render() {
-    const { isNoteEdited, title, url } = this.state;
+    const { isNoteEdited, title, url, backgroundColor } = this.state;
     return (
       <React.Fragment>
         <div
           onClick={this.editNote}
           className='note-preview img-note'
-          style={{ backgroundColor: this.getColor() }}
+          style={{ backgroundColor: this.props.note.style.backgroundColor }}
         >
           {!isNoteEdited ? (
             <React.Fragment>
@@ -82,6 +96,17 @@ export class NoteImg extends React.Component {
               </form>
             </React.Fragment>
           )}
+          <input
+            onChange={this.handleChange}
+            onClick={(ev) => {
+              ev.stopPropagation();
+            }}
+            type='color'
+            value={backgroundColor}
+            name='backgroundColor'
+          />
+          <button onClick={this.sendToTop}>send to top of the list </button>
+          <button onClick={this.duplicateNote}>duplicate</button>
           <button onClick={this.onDeleteNote}>X</button>
         </div>
       </React.Fragment>

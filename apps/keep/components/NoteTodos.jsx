@@ -6,6 +6,7 @@ export class NoteTodos extends React.Component {
     isNoteEdited: false,
     title: this.props.note.info.label,
     todos: '',
+    backgroundColor: '#454545',
   };
 
   // conponentDidMount() {
@@ -38,6 +39,10 @@ export class NoteTodos extends React.Component {
     const value = target.value;
     const field = target.name;
     this.setState((prevState) => ({ ...prevState, [field]: value }));
+    if (field === 'backgroundColor')
+      NoteService.saveBackgroundColor(this.props.note.id, value).then(
+        this.props.loadNotes()
+      );
   };
 
   onSubmit = () => {
@@ -47,13 +52,21 @@ export class NoteTodos extends React.Component {
       );
   };
 
+  sendToTop = () => {
+    NoteService.sendToTop(this.props.note.id).then(this.props.loadNotes());
+  };
+
+  duplicateNote = () => {
+    NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
+  };
+
   render() {
-    const { title, todos, isNoteEdited } = this.state;
+    const { title, todos, isNoteEdited, backgroundColor } = this.state;
     return (
       <div
         onClick={this.editNote}
         className='note-preview todos-note'
-        style={{ backgroundColor: utilService.getRandomColor() }}
+        style={{ backgroundColor: this.props.note.style.backgroundColor }}
       >
         {!isNoteEdited ? (
           <React.Fragment>
@@ -93,7 +106,17 @@ export class NoteTodos extends React.Component {
             </ul>
           </React.Fragment>
         )}
-
+        <input
+          onChange={this.handleChange}
+          onClick={(ev) => {
+            ev.stopPropagation();
+          }}
+          type='color'
+          value={backgroundColor}
+          name='backgroundColor'
+        />
+        <button onClick={this.sendToTop}>send to top of the list </button>
+        <button onClick={this.duplicateNote}>duplicate</button>
         <button onClick={this.onDeleteNote}>X</button>
       </div>
 

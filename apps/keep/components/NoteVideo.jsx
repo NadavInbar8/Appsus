@@ -5,6 +5,7 @@ export class NoteVideo extends React.Component {
     isNoteEdited: false,
     title: this.props.note.info.title,
     url: this.props.note.info.url,
+    backgroundColor: '#454545',
   };
 
   onDeleteNote = () => {
@@ -18,6 +19,10 @@ export class NoteVideo extends React.Component {
     const field = target.name;
     console.log(value, field);
     this.setState((prevState) => ({ ...prevState, [field]: value }));
+    if (field === 'backgroundColor')
+      NoteService.saveBackgroundColor(this.props.note.id, value).then(
+        this.props.loadNotes()
+      );
   };
 
   editNote = () => {
@@ -34,11 +39,23 @@ export class NoteVideo extends React.Component {
       );
   };
 
+  sendToTop = () => {
+    NoteService.sendToTop(this.props.note.id).then(this.props.loadNotes());
+  };
+
+  duplicateNote = () => {
+    NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
+  };
+
   render() {
-    const { isNoteEdited, title, url } = this.state;
+    const { backgroundColor, isNoteEdited, title, url } = this.state;
 
     return (
-      <div onClick={this.editNote} className='note-preview video-note'>
+      <div
+        style={{ backgroundColor: this.props.note.style.backgroundColor }}
+        onClick={this.editNote}
+        className='note-preview video-note'
+      >
         {!isNoteEdited ? (
           <React.Fragment>
             <h3>{this.props.note.info.title}</h3>
@@ -47,6 +64,15 @@ export class NoteVideo extends React.Component {
               height='175'
               src={this.props.note.info.url}
             ></iframe>
+            <input
+              onChange={this.handleChange}
+              onClick={(ev) => {
+                ev.stopPropagation();
+              }}
+              type='color'
+              value={backgroundColor}
+              name='backgroundColor'
+            />
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -82,7 +108,8 @@ export class NoteVideo extends React.Component {
             </form>
           </React.Fragment>
         )}
-
+        <button onClick={this.sendToTop}>send to top of the list </button>
+        <button onClick={this.duplicateNote}>duplicate</button>
         <button onClick={this.onDeleteNote}>X</button>
       </div>
 

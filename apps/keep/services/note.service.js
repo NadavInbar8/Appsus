@@ -9,6 +9,9 @@ export const NoteService = {
   updateTodosNote,
   updateImgNote,
   updateVideoNote,
+  saveBackgroundColor,
+  sendToTop,
+  duplicateNote,
 };
 
 const KEY = 'NotesDB';
@@ -68,6 +71,36 @@ function filterByTxt(notes, filterBy) {
   return finalFilter;
 }
 
+function sendToTop(noteId) {
+  console.log('onSend to top');
+  let notes = _loadNotesFromStorage();
+  let noteToTop = notes.find((note) => note.id === noteId);
+  let noteToTopIdx = notes.findIndex((note) => note.id === noteId);
+  notes.splice(noteToTopIdx, 1);
+  notes.unshift(noteToTop);
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
+function duplicateNote(noteId) {
+  let notes = _loadNotesFromStorage();
+  let noteToDuplicate = notes.find((note) => note.id === noteId);
+  noteToDuplicate.id = utilService.makeId();
+  notes.unshift(noteToDuplicate);
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
+function saveBackgroundColor(noteId, color) {
+  console.log(color);
+  let notes = _loadNotesFromStorage();
+  let noteToChange = notes.find((note) => note.id === noteId);
+  noteToChange.style.backgroundColor = color;
+
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
 function getFilterTodosByTxt(todoNotes, filterBy) {
   let filterTodos = todoNotes.filter((todo) =>
     todo.info.label.includes(filterBy.txt)
@@ -96,20 +129,6 @@ function addVideoNote(note) {
   let addedNote = createVideoNote(note);
   notes.unshift(addedNote);
   _saveNotesToStorage(notes);
-}
-
-function createVideoNote(note) {
-  return {
-    id: utilService.makeId(),
-    type: 'note-video',
-    info: {
-      url: note.url,
-      title: note.title,
-    },
-    style: {
-      backgroundColor: utilService.getRandomColor(),
-    },
-  };
 }
 
 function addImgNote(note) {
@@ -172,6 +191,19 @@ function createImgNote(note) {
     },
   };
 }
+function createVideoNote(note) {
+  return {
+    id: utilService.makeId(),
+    type: 'note-video',
+    info: {
+      url: note.url,
+      title: note.title,
+    },
+    style: {
+      backgroundColor: utilService.getRandomColor(),
+    },
+  };
+}
 
 function _addTxtNote(note) {
   let notes = _loadNotesFromStorage();
@@ -195,6 +227,9 @@ function createTodosNote(note) {
   });
 
   return {
+    style: {
+      backgroundColor: '#00d',
+    },
     id: utilService.makeId(),
     type: 'note-todos',
     info: { label: note.title, todos: TodosTxtAndTime },
@@ -206,6 +241,9 @@ function createTodosNote(note) {
 function createTxtNote(note) {
   const noteTxt = note.txt;
   return {
+    style: {
+      backgroundColor: '#00d',
+    },
     id: utilService.makeId(),
     type: 'note-txt',
     isPinned: false,
