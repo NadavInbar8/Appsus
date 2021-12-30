@@ -1,3 +1,6 @@
+import { NotesList } from '../apps/keep/components/NotesList.jsx';
+import { NoteService } from '../apps/keep/services/note.service.js';
+import { AddNote } from '../apps/keep/components/AddNote.jsx';
 export class KeepApp extends React.Component {
   state = {
     notes: [],
@@ -5,26 +8,30 @@ export class KeepApp extends React.Component {
   };
 
   componentDidMount() {
-    this.loadTodoos();
+    this.loadNotes();
   }
-  loadTodoos = () => {
+  loadNotes = () => {
     const { filterBy } = this.state;
-    NotesService.query(filterBy).then((notes) => {
-      this.setState({});
+    NoteService.query(filterBy).then((notes) => {
+      this.setState({ notes });
+      // console.log(notes);
     });
   };
 
-  onSetFilter = (filterBy) => {
-    console.log(filterBy);
-    this.setState({ filterBy }, this.loadMails);
-  };
+  // onSetFilter = (filterBy) => {
+  //   console.log(filterBy);
+  //   this.setState({ filterBy }, this.loadMails);
+  // };
 
   render() {
     const { notes } = this.state;
+
     return (
       <div>
         {/* <NotesHeader onSetFilter={this.onSetFilter} /> */}
-        {/* <NotesList notes={notes} /> */}
+        <AddNote loadNotes={this.loadNotes} />
+
+        {notes && <NotesList loadNotes={this.loadNotes} notes={notes} />}
       </div>
     );
   }
