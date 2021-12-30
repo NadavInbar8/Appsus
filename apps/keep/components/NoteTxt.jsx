@@ -94,7 +94,7 @@ export class NoteTxt extends React.Component {
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log('hi')}>
+            <button onClick={console.log}>
               <img src='assets/SVG/mailfornotes.svg' alt='' />
             </button>
           </div>

@@ -15,6 +15,7 @@ export class AddNoteTodos extends React.Component {
   submit = (ev) => {
     ev.preventDefault();
     NoteService.addNote('todos', this.state).then(this.props.loadNotes());
+    this.setState({ title: '', todos: '' });
   };
 
   render() {
@@ -22,8 +23,8 @@ export class AddNoteTodos extends React.Component {
     return (
       <div className='add-note-input'>
         <div>
-          <form onSubmit={this.submit} action=''>
-            <label htmlFor='title'>title:</label>
+          <form className='add-note-form' onSubmit={this.submit} action=''>
+            <label htmlFor='title'>Title:</label>
             <input
               type='text'
               onChange={this.handleChange}
@@ -33,7 +34,7 @@ export class AddNoteTodos extends React.Component {
             />
 
             <br />
-            <label htmlFor='todo'>write your todos:</label>
+            <label htmlFor='todo'>Write your todos:</label>
             <input
               type='text'
               onChange={this.handleChange}
@@ -42,7 +43,9 @@ export class AddNoteTodos extends React.Component {
               value={todos}
               placeholder='Enter comma seperated list'
             />
-            <button onClick={this.submit}>addTodo</button>
+            <button className='add-button'>
+              <img src='assets/SVG/add.svg' alt='' />
+            </button>
           </form>
         </div>
       </div>

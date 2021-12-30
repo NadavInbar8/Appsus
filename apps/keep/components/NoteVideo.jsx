@@ -120,7 +120,7 @@ export class NoteVideo extends React.Component {
             <button onClick={this.onDeleteNote}>
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log('hi')}>
+            <button onClick={console.log}>
               <img src='assets/SVG/mailfornotes.svg' alt='' />
             </button>
           </div>

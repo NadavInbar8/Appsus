@@ -1,8 +1,9 @@
 .add-note {
-  height: 7vh;
+  height: 9vh;
   width: 100%;
   background-color: rgb(219, 233, 200);
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 30px;
 }
@@ -35,15 +36,54 @@
   width: 150px;
   border-radius: 10px;
 }
-.add-note button {
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-radius: 10px;
-  background-color: #fed2aa;
-  font-size: 1.1rem;
-}
 
 .add-note h3 {
   margin-inline-start: 20px;
+}
+
+.add-note button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f5e5d7;
+}
+
+.add-note-form {
+  display: flex;
+  align-items: center;
+}
+.add-note button:hover {
+  align-self: center;
+  background-color: #d6b393;
+  cursor: pointer;
+}
+.add-note-input button img {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 30px;
+  width: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .add-note {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    justify-content: center;
+  }
+
+  .add-note-form {
+    margin-inline-start: 0px;
+  }
+  .add-note-form label {
+    margin: 5px;
+  }
+
+  .add-note h3 {
+    margin-inline-end: 10px;
+    margin-inline-start: 20px;
+  }
 }

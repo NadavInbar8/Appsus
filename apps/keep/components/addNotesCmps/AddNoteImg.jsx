@@ -24,8 +24,8 @@ export class AddNoteImg extends React.Component {
     return (
       <div className='add-note-input'>
         <div>
-          <form onSubmit={this.submit} action=''>
-            <label htmlFor='title'>title:</label>
+          <form className='add-note-form' onSubmit={this.submit} action=''>
+            <label htmlFor='title'>Title:</label>
             <input
               type='text'
               onChange={this.handleChange}
@@ -33,9 +33,8 @@ export class AddNoteImg extends React.Component {
               name='title'
               value={title}
             />
-
             <br />
-            <label htmlFor='url'>enter img url</label>
+            <label htmlFor='url'>Enter img url</label>
             <input
               type='text'
               onChange={this.handleChange}
@@ -44,7 +43,9 @@ export class AddNoteImg extends React.Component {
               value={url}
               placeholder='Enter img url'
             />
-            <button onClick={this.submit}>add img note</button>
+            <button className='add-button'>
+              <img src='assets/SVG/add.svg' alt='' />
+            </button>{' '}
           </form>
         </div>
       </div>

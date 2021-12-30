@@ -16,7 +16,7 @@ export class AddNote extends React.Component {
     const { noteType } = this.state;
     return (
       <div className='add-note'>
-        <h3>add note:</h3>
+        <h3>Add note:</h3>
         <form onSubmit={this.addNote} className='add-note-form'>
           <select
             value={noteType}

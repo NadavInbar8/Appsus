@@ -1,4 +1,6 @@
 .note-list {
+  width: 100%;
+  text-align: center;
   column-count: 5;
   gap: 10px;
 }
@@ -79,27 +81,54 @@
 .img-note img {
   max-width: 300px;
 }
-/* .img-note {
-  max-height: 400px;
-} */
 
 .txt-note {
   min-height: 100px;
 }
 
-.note-preview {
-}
-
 img .top-svg {
-  /* position: absolute; */
   height: 30px;
   width: 30px;
 }
 
-.todos-note {
+@media screen and (max-width: 900px) {
+  .note-list {
+    column-count: 1;
+    gap: 10px;
+  }
 }
 
-.note-preview {
-}
-.video-note {
+@media screen and (min-width: 900px) {
+  .note-list {
+    column-count: 1;
+    gap: 10px;
+  }
+
+  @media screen and (min-width: 900px) {
+    .note-list {
+      column-count: 2;
+      gap: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .note-list {
+      column-count: 3;
+      gap: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .note-list {
+      column-count: 4;
+      gap: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1950px) {
+    .note-list {
+      column-count: 5;
+      gap: 10px;
+    }
+  }
 }

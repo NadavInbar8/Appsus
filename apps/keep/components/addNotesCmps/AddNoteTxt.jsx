@@ -21,7 +21,7 @@ export class AddNoteTxt extends React.Component {
     const { txt } = this.state;
     return (
       <div className='add-note-input'>
-        <form onSubmit={this.submit} action=''>
+        <form className='add-note-form' onSubmit={this.submit} action=''>
           <input
             type='text'
             onChange={this.handleChange}
@@ -29,7 +29,9 @@ export class AddNoteTxt extends React.Component {
             name='content'
             value={txt}
           />
-          <button>submit</button>
+          <button className='add-button'>
+            <img src='assets/SVG/add.svg' alt='' />
+          </button>
         </form>
       </div>
     );

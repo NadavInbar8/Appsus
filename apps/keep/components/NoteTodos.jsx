@@ -60,6 +60,11 @@ export class NoteTodos extends React.Component {
     NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
   };
 
+  toggleLine = (ev) => {
+    ev.stopPropagation();
+    ev.target.style = 'text-decoration:line-through';
+  };
+
   render() {
     const { title, todos, isNoteEdited, backgroundColor } = this.state;
     return (
@@ -74,7 +79,16 @@ export class NoteTodos extends React.Component {
               <h2>{this.props.note.info.label}</h2>
               <ul>
                 {this.props.note.info.todos.map((todo, idx) => {
-                  return <li key={idx}>{todo.txt}</li>;
+                  return (
+                    <li
+                      key={idx}
+                      onClick={(ev) => {
+                        this.toggleLine(ev);
+                      }}
+                    >
+                      {todo.txt}
+                    </li>
+                  );
                 })}
               </ul>
             </React.Fragment>
@@ -103,7 +117,7 @@ export class NoteTodos extends React.Component {
               />
               <ul>
                 {this.props.note.info.todos.map((todo, idx) => {
-                  return <li key={idx}>{todo.txt}</li>;
+                  return <li key={idx}> {todo.txt}</li>;
                 })}
               </ul>
             </React.Fragment>
@@ -131,7 +145,7 @@ export class NoteTodos extends React.Component {
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log('hi')}>
+            <button onClick={console.log}>
               <img src='assets/SVG/mailfornotes.svg' alt='' />
             </button>
           </div>
