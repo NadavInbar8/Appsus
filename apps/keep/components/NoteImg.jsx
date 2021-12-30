@@ -3,8 +3,8 @@ import { NoteService } from '../services/note.service.js';
 export class NoteImg extends React.Component {
   state = {
     isNoteEdited: false,
-    title: '',
-    url: '',
+    title: this.props.note.info.title,
+    url: this.props.note.info.url,
   };
 
   getColor = () => {
@@ -12,8 +12,8 @@ export class NoteImg extends React.Component {
   };
   onDeleteNote = () => {
     console.log(this.props.note.id);
-    NoteService.deleteNote(note.id).then(() => {
-      loadNotes();
+    NoteService.deleteNote(this.props.note.id).then(() => {
+      this.props.loadNotes();
     });
   };
 
@@ -25,19 +25,15 @@ export class NoteImg extends React.Component {
   };
 
   editNote = () => {
+    if (this.state.isNoteEdited === true) this.onSubmit();
     this.setState({
       isNoteEdited: !this.state.isNoteEdited,
     });
   };
 
-  onSubmit = (ev) => {
-    ev.preventDefault();
+  onSubmit = () => {
+    this.setState({ isNoteEdited: !this.state.isNoteEdited });
     NoteService.updateImgNote(this.props.note.id, this.state).then(
-      this.setState({
-        isNoteEdited: !this.state.isNoteEdited,
-        title: '',
-        url: '',
-      }),
       this.props.loadNotes()
     );
   };
@@ -46,47 +42,48 @@ export class NoteImg extends React.Component {
     const { isNoteEdited, title, url } = this.state;
     return (
       <React.Fragment>
-        {!isNoteEdited && (
-          <div
-            onClick={this.editNote}
-            className='note-preview img-note'
-            style={{ backgroundColor: this.getColor() }}
-          >
-            <h2>{this.props.note.info.title}</h2>
-            <img src={this.props.note.info.url} alt='' />
-            <button onClick={this.onDeleteNote}>X</button>
-            {/* <button onClick={}>update</button> */}
-          </div>
-        )}
+        <div
+          onClick={this.editNote}
+          className='note-preview img-note'
+          style={{ backgroundColor: this.getColor() }}
+        >
+          {!isNoteEdited ? (
+            <React.Fragment>
+              <h2>{this.props.note.info.title}</h2>
+              <img src={this.props.note.info.url} alt='' />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <form>
+                <label htmlFor='title'>update img title</label>
+                <input
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                  }}
+                  name='title'
+                  id='title'
+                  onChange={this.handleChange}
+                  value={title}
+                  type='text'
+                />
 
-        {isNoteEdited && (
-          <div
-            className='note-preview img-note'
-            style={{ backgroundColor: this.getColor() }}
-          >
-            <form onSubmit={this.onSubmit}>
-              <label htmlFor='title'>update img title</label>
-              <input
-                name='title'
-                id='title'
-                onChange={this.handleChange}
-                value={title}
-                type='text'
-              />
-
-              <label htmlFor='url'>update img url</label>
-              <input
-                name='url'
-                id='url'
-                onChange={this.handleChange}
-                value={url}
-                type='text'
-              />
-              <button>submit</button>
-            </form>
-            <button onClick={this.editNote}>go back </button>
-          </div>
-        )}
+                <label htmlFor='url'>update img url</label>
+                <input
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                  }}
+                  name='url'
+                  id='url'
+                  onChange={this.handleChange}
+                  value={url}
+                  type='text'
+                />
+                <img src={this.props.note.info.url} alt='' />
+              </form>
+            </React.Fragment>
+          )}
+          <button onClick={this.onDeleteNote}>X</button>
+        </div>
       </React.Fragment>
     );
   }

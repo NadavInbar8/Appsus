@@ -17,11 +17,9 @@ function query(filterBy = null) {
   let notes = _loadNotesFromStorage();
 
   if (!notes || !notes.length) {
-    console.log('from server');
     return axios
       .get('apps/keep/services/notes.json')
       .then((res) => {
-        console.log(res.data);
         _saveNotesToStorage(res.data);
         return res.data;
       })
@@ -31,11 +29,50 @@ function query(filterBy = null) {
       });
   } else {
     if (!filterBy) return Promise.resolve(notes);
-    const FilteredNotes = _getFilteredMails(notes, filterBy);
+    const FilteredNotes = _getFilteredNotes(notes, filterBy);
     console.log(FilteredNotes);
 
     return Promise.resolve(FilteredNotes);
   }
+}
+
+function _getFilteredNotes(notes, filterBy) {
+  console.log(filterBy);
+  if (filterBy.txt === '' && filterBy.type === '') return notes;
+  else if (filterBy.txt === '' && filterBy.type !== '')
+    return notes.filter((note) => note.type === filterBy.type);
+  else return filterByTxt(notes, filterBy);
+}
+
+function filterByTxt(notes, filterBy) {
+  let videoAndImgNotes = notes.filter(
+    (note) => note.type === 'note-img' || note.type === 'note-video'
+  );
+  // console.log(videoAndImgNotes);
+
+  let txtNotes = notes.filter((note) => note.type === 'note-txt');
+  // console.log(txtNotes);
+
+  let todoNotes = notes.filter((note) => note.type === 'note-todos');
+  // console.log(todoNotes);
+
+  let filterVideosAndImgs = videoAndImgNotes.filter((note) =>
+    note.info.title.includes(filterBy.txt)
+  );
+  let filterTxtNotes = txtNotes.filter((note) =>
+    note.info.txt.includes(filterBy.txt)
+  );
+  let filterTodos = getFilterTodosByTxt(todoNotes, filterBy);
+
+  let finalFilter = filterVideosAndImgs.concat(filterTxtNotes, filterTodos);
+  return finalFilter;
+}
+
+function getFilterTodosByTxt(todoNotes, filterBy) {
+  let filterTodos = todoNotes.filter((todo) =>
+    todo.info.label.includes(filterBy.txt)
+  );
+  return filterTodos;
 }
 
 function addNote(type, note) {
@@ -47,17 +84,14 @@ function addNote(type, note) {
 }
 
 function deleteNote(noteId) {
-  console.log(noteId);
   let notes = _loadNotesFromStorage();
   var notesToSave = notes.filter((note) => note.id !== noteId);
-  console.log(notesToSave);
 
   _saveNotesToStorage(notesToSave);
   return Promise.resolve();
 }
 
 function addVideoNote(note) {
-  console.log(note, 'in service');
   let notes = _loadNotesFromStorage();
   let addedNote = createVideoNote(note);
   notes.unshift(addedNote);
@@ -94,7 +128,6 @@ function updateTxtNote(noteId, txt) {
 }
 
 function updateTodosNote(noteId, updatedTodo) {
-  console.log(updatedTodo);
   let todoArray = updatedTodo.todos.split(',');
   let todoWithText = todoArray.map((todo) => {
     return { txt: todo, doneAt: Date.now() };
@@ -103,13 +136,12 @@ function updateTodosNote(noteId, updatedTodo) {
   let noteUpdated = notes.find((note) => note.id === noteId);
   noteUpdated.info.label = updatedTodo.title;
   noteUpdated.info.todos = todoWithText;
-  console.log(updatedTodo);
+
   _saveNotesToStorage(notes);
   return Promise.resolve();
 }
 
 function updateImgNote(noteId, updateNote) {
-  console.log(updateNote);
   let notes = _loadNotesFromStorage();
   let noteUpdated = notes.find((note) => note.id === noteId);
   noteUpdated.info.url = updateNote.url;
@@ -154,7 +186,6 @@ function addTodosNote(note) {
   let addedNote = createTodosNote(note);
   notes.unshift(addedNote);
   _saveNotesToStorage(notes);
-  console.log(note);
 }
 
 function createTodosNote(note) {
@@ -162,7 +193,7 @@ function createTodosNote(note) {
   let TodosTxtAndTime = todosTxt.map((todo) => {
     return { txt: todo, doneAt: Date.now() };
   });
-  console.log(TodosTxtAndTime);
+
   return {
     id: utilService.makeId(),
     type: 'note-todos',

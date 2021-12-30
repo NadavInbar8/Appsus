@@ -3,8 +3,8 @@ import { NoteService } from '../services/note.service.js';
 // ({ note, loadNotes })
 export class NoteTxt extends React.Component {
   state = {
-    isNoteEdited: true,
-    txt: '',
+    isEditNote: false,
+    txt: this.props.note.info.txt,
   };
 
   onDeleteNote = () => {
@@ -15,8 +15,9 @@ export class NoteTxt extends React.Component {
   };
 
   editNote = () => {
+    if (this.state.isEditNote) this.updateNote();
     console.log('on edit');
-    this.setState({ isNoteEdited: !this.state.isNoteEdited });
+    this.setState({ isEditNote: !this.state.isEditNote });
   };
 
   handleChange = ({ target }) => {
@@ -24,56 +25,39 @@ export class NoteTxt extends React.Component {
     this.setState((prevState) => ({ ...prevState, txt: value }));
   };
 
-  updateNote = (ev) => {
-    ev.preventDefault();
+  updateNote = () => {
+    console.log(this.state);
     NoteService.updateTxtNote(this.props.note.id, this.state.txt).then(
       this.props.loadNotes()
     );
-    this.setState({ isNoteEdited: !this.state.isNoteEdited, txt: '' });
-
-    console.log(this.state);
+    this.setState({ isEditNote: !this.state.isEditNote });
   };
 
   render() {
-    const { isNoteEdited, txt } = this.state;
+    const { isEditNote: isEditNote, txt } = this.state;
     return (
-      <React.Fragment>
-        {isNoteEdited && (
-          <div
-            onClick={this.editNote}
-            className='note-preview txt-note'
-            style={{ backgroundColor: utilService.getRandomColor() }}
-          >
-            <h2>note!</h2>
-            <p>{this.props.note.info.txt}</p>
-            <button onClick={this.onDeleteNote}>X</button>
-          </div>
+      <div
+        onClick={this.editNote}
+        className='note-preview txt-note'
+        style={{ backgroundColor: utilService.getRandomColor() }}
+      >
+        <h2>note!</h2>
+        {isEditNote ? (
+          <input
+            onClick={(ev) => {
+              ev.stopPropagation();
+            }}
+            name='txt'
+            value={txt}
+            onChange={this.handleChange}
+            type='text'
+          />
+        ) : (
+          <p>{txt}</p>
         )}
 
-        {!isNoteEdited && (
-          <div
-            className='note-preview txt-note'
-            style={{ backgroundColor: utilService.getRandomColor() }}
-          >
-            <button onClick={this.editNote}> go back </button>
-
-            <h2>now you can edit your text </h2>
-            <form onSubmit={this.updateNote}>
-              <label htmlFor='changeTxtNote'></label>
-              <input
-                name='changeTxtNote'
-                value={txt}
-                onChange={this.handleChange}
-                id='changeTxtNote'
-                value={this.txt}
-                type='text'
-              />
-              <button>submit changes</button>
-            </form>
-            <button onClick={this.onDeleteNote}>X</button>
-          </div>
-        )}
-      </React.Fragment>
+        <button onClick={this.onDeleteNote}>X</button>
+      </div>
     );
   }
 }
