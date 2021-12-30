@@ -43,3 +43,7 @@
   background-color: #fed2aa;
   font-size: 1.1rem;
 }
+
+.add-note h3 {
+  margin-inline-start: 20px;
+}

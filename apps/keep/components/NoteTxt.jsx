@@ -59,6 +59,7 @@ export class NoteTxt extends React.Component {
           <h2>note!</h2>
           {isEditNote ? (
             <input
+              autoFocus
               onClick={(ev) => {
                 ev.stopPropagation();
               }}
@@ -92,6 +93,9 @@ export class NoteTxt extends React.Component {
             <button onClick={this.onDeleteNote}>
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
+            </button>
+            <button onClick={console.log('hi')}>
+              <img src='assets/SVG/mailfornotes.svg' alt='' />
             </button>
           </div>
         </div>

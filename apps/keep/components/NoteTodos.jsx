@@ -80,8 +80,9 @@ export class NoteTodos extends React.Component {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <label htmlFor='title'>update todos title</label>
+              <label htmlFor='title'></label>
               <input
+                autoFocus
                 onClick={(ev) => {
                   ev.stopPropagation();
                 }}
@@ -90,8 +91,8 @@ export class NoteTodos extends React.Component {
                 value={title}
                 type='text'
               />
-              <label htmlFor='todos'>create new todo list</label>
               <input
+                autoFocus
                 onClick={(ev) => {
                   ev.stopPropagation();
                 }}
@@ -130,39 +131,12 @@ export class NoteTodos extends React.Component {
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
+            <button onClick={console.log('hi')}>
+              <img src='assets/SVG/mailfornotes.svg' alt='' />
+            </button>
           </div>
         </div>
       </div>
-
-      /* {!isNoteEdited && (
-          <div
-            className='note-preview todos-note'
-            style={{ backgroundColor: utilService.getRandomColor() }}
-          >
-            <form onSubmit={this.updateNote}>
-              <label htmlFor='todosTitle'>create a new title</label>
-              <input
-                onChange={this.handleChange}
-                value={title}
-                name='title'
-                id='todosTitle'
-                type='text'
-              />
-              <br />
-              <label htmlFor='todos'>create new todo list</label>
-              <input
-                onChange={this.handleChange}
-                value={todos}
-                name='todos'
-                id='todos'
-                type='text'
-              />
-              <button>update</button>
-            </form>
-            <button onClick={this.onDeleteNote}>X</button>
-            <button onClick={this.editNote}>go back</button>
-          </div> */
-      /* )} */
     );
   }
 }

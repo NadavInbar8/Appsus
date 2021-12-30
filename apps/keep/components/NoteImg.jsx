@@ -84,6 +84,7 @@ export class NoteImg extends React.Component {
 
                   <label htmlFor='url'>update img url</label>
                   <input
+                    autoFocus
                     onClick={(ev) => {
                       ev.stopPropagation();
                     }}
@@ -99,6 +100,7 @@ export class NoteImg extends React.Component {
             )}
             <div className='preview-buttons'>
               <input
+                autoFocus
                 onChange={this.handleChange}
                 onClick={(ev) => {
                   ev.stopPropagation();
@@ -118,6 +120,9 @@ export class NoteImg extends React.Component {
               <button onClick={this.onDeleteNote}>
                 {' '}
                 <img src='assets/SVG/trash.svg' alt='' />
+              </button>
+              <button onClick={console.log('hi')}>
+                <img src='assets/SVG/mailfornotes.svg' alt='' />
               </button>
             </div>
           </div>

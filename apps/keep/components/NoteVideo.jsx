@@ -69,8 +69,8 @@ export class NoteVideo extends React.Component {
           ) : (
             <React.Fragment>
               <form>
-                <label htmlFor='title'>update img title</label>
                 <input
+                  autoFocus
                   onClick={(ev) => {
                     ev.stopPropagation();
                   }}
@@ -80,9 +80,8 @@ export class NoteVideo extends React.Component {
                   value={title}
                   type='text'
                 />
-
-                <label htmlFor='url'>update img url</label>
                 <input
+                  autoFocus
                   onClick={(ev) => {
                     ev.stopPropagation();
                   }}
@@ -119,8 +118,10 @@ export class NoteVideo extends React.Component {
               <img src='assets/SVG/dup.svg' alt='' />
             </button>
             <button onClick={this.onDeleteNote}>
-              {' '}
               <img src='assets/SVG/trash.svg' alt='' />
+            </button>
+            <button onClick={console.log('hi')}>
+              <img src='assets/SVG/mailfornotes.svg' alt='' />
             </button>
           </div>
         </div>
