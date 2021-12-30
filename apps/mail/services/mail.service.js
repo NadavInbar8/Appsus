@@ -10,10 +10,10 @@ export const mailService = {
 const KEY = 'mailsDb';
 const loggedinUser = {
   email: 'user@appsus.com',
-  fullname: 'Nadav Inbar and Oded Kovo',
+  fullname: 'Nadav Inbar',
 };
 // {mailSearch: ';lkj', filter: ''}
-function query(filterBy = null) {
+function query(filterBy = null, folderFilter = 0) {
   let mails = _loadMailsFromStorage();
 
   if (!mails || !mails.length) {
@@ -31,7 +31,38 @@ function query(filterBy = null) {
       });
   } else {
     console.log('from storage');
-    if (!filterBy) return Promise.resolve(mails);
+    if (folderFilter === 0) {
+      let notTrash = mails.filter((mail) => mail.isTrash === false);
+      return Promise.resolve(notTrash);
+    }
+    if (folderFilter === 1) {
+      let didRead = mails.filter(
+        (mail) => mail.isRead === true && mail.isTrash === false
+      );
+      return Promise.resolve(didRead);
+    }
+    if (folderFilter === 2) {
+      let didntRead = mails.filter(
+        (mail) => mail.isRead === false && mail.isTrash === false
+      );
+      return Promise.resolve(didntRead);
+    }
+    if (folderFilter === 3) {
+      let isStar = mails.filter(
+        (mail) => mail.star === true && mail.isTrash === false
+      );
+      return Promise.resolve(isStar);
+    }
+    if (folderFilter === 4) {
+      let isTrash = mails.filter((mail) => mail.isTrash === true);
+      return Promise.resolve(isTrash);
+    }
+    if (folderFilter === 5) {
+      let sent = mails.filter(
+        (mail) => mail.fromEmail === 'user@appsus.com' && mail.isTrash === false
+      );
+      return Promise.resolve(sent);
+    }
     const FilteredMails = _getFilteredMails(mails, filterBy);
     console.log(FilteredMails);
 
@@ -48,9 +79,11 @@ function sendNewMail(newMail) {
     sentAt: Date.now(),
     star: false,
     labels: [],
+    fromEmail: loggedinUser.email,
     to: newMail.to,
     from: loggedinUser.fullname,
     isOpen: false,
+    isTrash: false,
   };
 
   let mails = query(null).then((queryMails) => {
@@ -66,11 +99,17 @@ function saveMails(mails) {
 }
 
 function _getFilteredMails(mails, filterBy) {
-  let { filter } = filterBy;
   let { mailSearch } = filterBy;
-  if (filter === '') return mails;
+  if (mailSearch === '') {
+    return mails;
+  }
   let MailsFiltered = mails.filter((mail) => {
-    return mail[filter].includes(mailSearch);
+    if (mail.subject.toUpperCase().includes(mailSearch.toUpperCase())) {
+      return mail;
+    }
+    if (mail.body.toUpperCase().includes(mailSearch)) return mail;
+    if (mail.to.toUpperCase().includes(mailSearch)) return mail;
+    if (mail.from.toUpperCase().includes(mailSearch)) return mail;
   });
   return MailsFiltered;
 }

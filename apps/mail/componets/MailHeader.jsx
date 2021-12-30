@@ -3,7 +3,6 @@ import { mailService } from '../services/mail.service.js';
 export class MailHeader extends React.Component {
   state = {
     mailSearch: '',
-    filter: '',
   };
 
   handleChange = ({ target }) => {
@@ -12,13 +11,13 @@ export class MailHeader extends React.Component {
     this.setState((prevState) => ({ ...prevState, [field]: value }));
   };
 
-  getFitler = (ev) => {
+  getFilter = (ev) => {
     ev.preventDefault();
     this.props.onSetFilter(this.state);
   };
 
   render() {
-    const { mailSearch, filter } = this.state;
+    const { mailSearch } = this.state;
     return (
       <div className='mail-header'>
         <div className='mail-main-header flex'>
@@ -26,7 +25,7 @@ export class MailHeader extends React.Component {
             <img src='./assets/SVG/mail.svg' alt='' />
           </div>
           <div className='search-mail'>
-            <form onSubmit={this.getFitler} className='mail-filter'>
+            <form onSubmit={this.getFilter} className='mail-filter'>
               <label htmlFor='searchMail'>search mail:</label>
               <input
                 type='text'
@@ -35,19 +34,6 @@ export class MailHeader extends React.Component {
                 value={mailSearch}
                 onChange={this.handleChange}
               />
-
-              <label htmlFor='filter'>Rate:</label>
-              <select
-                value={filter}
-                onChange={this.handleChange}
-                name='filter'
-                id='filter'
-              >
-                <option value=''>All Mails</option>
-                <option value='subject'>subject</option>
-                <option value='body'>body</option>
-                <option value='from'>from</option>
-              </select>
               <button>submit</button>
             </form>
           </div>

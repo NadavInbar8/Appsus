@@ -1,6 +1,6 @@
 const { Link } = ReactRouterDOM;
 
-export function MailPreview({ mail, togglePreview }) {
+export function MailPreview({ mail, togglePreview, onMoveToTrash }) {
   return (
     <Link className='clean-link' to={'/mail'}>
       <div>
@@ -15,6 +15,9 @@ export function MailPreview({ mail, togglePreview }) {
             <div className='from-preview'>{mail.from}</div>
             <div className='subject-preview'>{mail.subject}</div>
             <div className='text-preview'>{mail.body}</div>
+            <button className='delete' onClick={onMoveToTrash}>
+              move to trash
+            </button>
           </div>
         ) : (
           <div
