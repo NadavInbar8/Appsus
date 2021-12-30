@@ -56,14 +56,51 @@ export class NoteVideo extends React.Component {
         onClick={this.editNote}
         className='note-preview video-note'
       >
-        {!isNoteEdited ? (
-          <React.Fragment>
-            <h3>{this.props.note.info.title}</h3>
-            <iframe
-              width='233'
-              height='175'
-              src={this.props.note.info.url}
-            ></iframe>
+        <div className='preview-content'>
+          {!isNoteEdited ? (
+            <React.Fragment>
+              <h3>{this.props.note.info.title}</h3>
+              <iframe
+                width='233'
+                height='175'
+                src={this.props.note.info.url}
+              ></iframe>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <form>
+                <label htmlFor='title'>update img title</label>
+                <input
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                  }}
+                  name='title'
+                  id='title'
+                  onChange={this.handleChange}
+                  value={title}
+                  type='text'
+                />
+
+                <label htmlFor='url'>update img url</label>
+                <input
+                  onClick={(ev) => {
+                    ev.stopPropagation();
+                  }}
+                  name='url'
+                  id='url'
+                  onChange={this.handleChange}
+                  value={url}
+                  type='text'
+                />
+                <iframe
+                  width='233'
+                  height='175'
+                  src={this.props.note.info.url}
+                ></iframe>
+              </form>
+            </React.Fragment>
+          )}
+          <div className='preview-buttons'>
             <input
               onChange={this.handleChange}
               onClick={(ev) => {
@@ -73,44 +110,20 @@ export class NoteVideo extends React.Component {
               value={backgroundColor}
               name='backgroundColor'
             />
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <form>
-              <label htmlFor='title'>update img title</label>
-              <input
-                onClick={(ev) => {
-                  ev.stopPropagation();
-                }}
-                name='title'
-                id='title'
-                onChange={this.handleChange}
-                value={title}
-                type='text'
-              />
-
-              <label htmlFor='url'>update img url</label>
-              <input
-                onClick={(ev) => {
-                  ev.stopPropagation();
-                }}
-                name='url'
-                id='url'
-                onChange={this.handleChange}
-                value={url}
-                type='text'
-              />
-              <iframe
-                width='233'
-                height='175'
-                src={this.props.note.info.url}
-              ></iframe>
-            </form>
-          </React.Fragment>
-        )}
-        <button onClick={this.sendToTop}>send to top of the list </button>
-        <button onClick={this.duplicateNote}>duplicate</button>
-        <button onClick={this.onDeleteNote}>X</button>
+            <img className='paint-img' src='assets/SVG/paint.svg' alt='' />
+            <button onClick={this.sendToTop}>
+              <img src='assets/SVG/top.svg' alt='' />
+            </button>
+            <button onClick={this.duplicateNote}>
+              {' '}
+              <img src='assets/SVG/dup.svg' alt='' />
+            </button>
+            <button onClick={this.onDeleteNote}>
+              {' '}
+              <img src='assets/SVG/trash.svg' alt='' />
+            </button>
+          </div>
+        </div>
       </div>
 
       /* {isNoteEdited && (

@@ -61,53 +61,66 @@ export class NoteImg extends React.Component {
           className='note-preview img-note'
           style={{ backgroundColor: this.props.note.style.backgroundColor }}
         >
-          {!isNoteEdited ? (
-            <React.Fragment>
-              <h2>{this.props.note.info.title}</h2>
-              <img src={this.props.note.info.url} alt='' />
-            </React.Fragment>
-          ) : (
-            <React.Fragment>
-              <form>
-                <label htmlFor='title'>update img title</label>
-                <input
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                  }}
-                  name='title'
-                  id='title'
-                  onChange={this.handleChange}
-                  value={title}
-                  type='text'
-                />
-
-                <label htmlFor='url'>update img url</label>
-                <input
-                  onClick={(ev) => {
-                    ev.stopPropagation();
-                  }}
-                  name='url'
-                  id='url'
-                  onChange={this.handleChange}
-                  value={url}
-                  type='text'
-                />
+          <div className='preview-content'>
+            {!isNoteEdited ? (
+              <React.Fragment>
+                <h2>{this.props.note.info.title}</h2>
                 <img src={this.props.note.info.url} alt='' />
-              </form>
-            </React.Fragment>
-          )}
-          <input
-            onChange={this.handleChange}
-            onClick={(ev) => {
-              ev.stopPropagation();
-            }}
-            type='color'
-            value={backgroundColor}
-            name='backgroundColor'
-          />
-          <button onClick={this.sendToTop}>send to top of the list </button>
-          <button onClick={this.duplicateNote}>duplicate</button>
-          <button onClick={this.onDeleteNote}>X</button>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <form>
+                  <label htmlFor='title'>update img title</label>
+                  <input
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                    }}
+                    name='title'
+                    id='title'
+                    onChange={this.handleChange}
+                    value={title}
+                    type='text'
+                  />
+
+                  <label htmlFor='url'>update img url</label>
+                  <input
+                    onClick={(ev) => {
+                      ev.stopPropagation();
+                    }}
+                    name='url'
+                    id='url'
+                    onChange={this.handleChange}
+                    value={url}
+                    type='text'
+                  />
+                  <img src={this.props.note.info.url} alt='' />
+                </form>
+              </React.Fragment>
+            )}
+            <div className='preview-buttons'>
+              <input
+                onChange={this.handleChange}
+                onClick={(ev) => {
+                  ev.stopPropagation();
+                }}
+                type='color'
+                value={backgroundColor}
+                name='backgroundColor'
+              />
+              <img className='paint-img' src='assets/SVG/paint.svg' alt='' />
+              <button onClick={this.sendToTop}>
+                <img src='assets/SVG/top.svg' alt='' />
+              </button>
+              <button onClick={this.duplicateNote}>
+                {' '}
+                <img src='assets/SVG/dup.svg' alt='' />
+              </button>
+              <button onClick={this.onDeleteNote}>
+                {' '}
+                <img src='assets/SVG/trash.svg' alt='' />
+              </button>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );

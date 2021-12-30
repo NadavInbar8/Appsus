@@ -41,13 +41,15 @@ function query(filterBy = null) {
 
 function _getFilteredNotes(notes, filterBy) {
   console.log(filterBy);
-  if (filterBy.txt === '' && filterBy.type === '') return notes;
+  if (filterBy.txt === '' && filterBy.type === 'all') return notes;
   else if (filterBy.txt === '' && filterBy.type !== '')
     return notes.filter((note) => note.type === filterBy.type);
   else return filterByTxt(notes, filterBy);
 }
 
 function filterByTxt(notes, filterBy) {
+  if (filterBy.txt === '') return notes;
+
   let videoAndImgNotes = notes.filter(
     (note) => note.type === 'note-img' || note.type === 'note-video'
   );
@@ -84,7 +86,8 @@ function sendToTop(noteId) {
 
 function duplicateNote(noteId) {
   let notes = _loadNotesFromStorage();
-  let noteToDuplicate = notes.find((note) => note.id === noteId);
+  let currNote = notes.find((note) => note.id === noteId);
+  let noteToDuplicate = { ...currNote };
   noteToDuplicate.id = utilService.makeId();
   notes.unshift(noteToDuplicate);
   _saveNotesToStorage(notes);
@@ -92,7 +95,6 @@ function duplicateNote(noteId) {
 }
 
 function saveBackgroundColor(noteId, color) {
-  console.log(color);
   let notes = _loadNotesFromStorage();
   let noteToChange = notes.find((note) => note.id === noteId);
   noteToChange.style.backgroundColor = color;

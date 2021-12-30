@@ -17,7 +17,6 @@ export class AddNote extends React.Component {
     return (
       <div className='add-note'>
         <form onSubmit={this.addNote} className='add-note-form'>
-          <label htmlFor='noteType'>type</label>
           <select
             value={noteType}
             onChange={this.handleChange}

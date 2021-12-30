@@ -32,10 +32,14 @@ export class KeepHeader extends React.Component {
     return (
       <div className='keep-header'>
         <form action=''>
-          <label htmlFor='txt'>search for note:</label>
-          <input onChange={this.handleChange} name='txt' type='text' id='txt' />
+          <input
+            onChange={this.handleChange}
+            placeholder='search note here...'
+            name='txt'
+            type='text'
+            id='txt'
+          />
 
-          <label htmlFor='type'>serch by note type</label>
           <select
             onChange={this.handleChange}
             value={type}

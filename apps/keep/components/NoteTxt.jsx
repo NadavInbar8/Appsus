@@ -55,33 +55,46 @@ export class NoteTxt extends React.Component {
         className='note-preview txt-note'
         style={{ backgroundColor: this.props.note.style.backgroundColor }}
       >
-        <h2>note!</h2>
-        {isEditNote ? (
-          <input
-            onClick={(ev) => {
-              ev.stopPropagation();
-            }}
-            name='txt'
-            value={txt}
-            onChange={this.handleChange}
-            type='text'
-          />
-        ) : (
-          <p>{txt}</p>
-        )}
+        <div className='preview-content'>
+          <h2>note!</h2>
+          {isEditNote ? (
+            <input
+              onClick={(ev) => {
+                ev.stopPropagation();
+              }}
+              name='txt'
+              value={txt}
+              onChange={this.handleChange}
+              type='text'
+            />
+          ) : (
+            <p>{txt}</p>
+          )}
 
-        <input
-          onChange={this.handleChange}
-          onClick={(ev) => {
-            ev.stopPropagation();
-          }}
-          type='color'
-          value={backgroundColor}
-          name='backgroundColor'
-        />
-        <button onClick={this.sendToTop}>send to top of the list </button>
-        <button onClick={this.duplicateNote}>duplicate</button>
-        <button onClick={this.onDeleteNote}>X</button>
+          <div className='preview-buttons'>
+            <input
+              onChange={this.handleChange}
+              onClick={(ev) => {
+                ev.stopPropagation();
+              }}
+              type='color'
+              value={backgroundColor}
+              name='backgroundColor'
+            />
+            <img className='paint-img' src='assets/SVG/paint.svg' alt='' />
+            <button onClick={this.sendToTop}>
+              <img src='assets/SVG/top.svg' alt='' />
+            </button>
+            <button onClick={this.duplicateNote}>
+              {' '}
+              <img src='assets/SVG/dup.svg' alt='' />
+            </button>
+            <button onClick={this.onDeleteNote}>
+              {' '}
+              <img src='assets/SVG/trash.svg' alt='' />
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
