@@ -69,6 +69,7 @@ export class NoteTodos extends React.Component {
 
   render() {
     const { title, todos, isNoteEdited, backgroundColor } = this.state;
+    const x = this.getTodosToShow();
     return (
       <div
         onClick={this.editNote}
@@ -149,7 +150,7 @@ export class NoteTodos extends React.Component {
             </button>
             <Link
               className='clean-link'
-              to={`/mail/notemail?subject=${title}&body=${todos}`}
+              to={`/mail/notemail?subject=${title}&body=${x}`}
             >
               <button>
                 <img src='assets/SVG/mailfornotes.svg' alt='' />
