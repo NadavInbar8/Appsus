@@ -25,7 +25,10 @@ export function MailPreview({
           <div className='clickable flex' onClick={togglePreview}>
             <div className='from-preview'>{mail.from}</div>
             <div className='subject-preview'>{mail.subject}</div>
-            <div className='text-preview'>{mail.body}</div>
+            <div className='text-preview'>
+              {mail.body > 100 ? mail.body.slice(0, 30) : mail.body}
+            </div>
+            <div className='labels'>{mail.labels} </div>
           </div>
           <div className='preview-options'>
             <Link className='clean-link' to={`/mail/${mail.id}`}>

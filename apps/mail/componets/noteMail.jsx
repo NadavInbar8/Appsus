@@ -1,12 +1,17 @@
 import { mailService } from '../services/mail.service.js';
 
-export class ComposeMail extends React.Component {
+export class noteMail extends React.Component {
   state = {
     to: '',
     subject: '',
     text: '',
     labels: [],
   };
+
+  get searchParams() {
+    const urlSearchParams = URLSearchParams(this.props.location.search);
+    return urlSearchParams.get('notemail');
+  }
 
   handleChange = ({ target }) => {
     const field = target.name;
