@@ -83,6 +83,12 @@ function sendToTop(noteId) {
   _saveNotesToStorage(notes);
   return Promise.resolve();
 }
+oded();
+function oded() {
+  let notes = _loadNotesFromStorage();
+  let oded = JSON.stringify(notes);
+  console.log(oded);
+}
 
 function duplicateNote(noteId) {
   let notes = _loadNotesFromStorage();
