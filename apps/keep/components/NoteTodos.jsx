@@ -149,7 +149,7 @@ export class NoteTodos extends React.Component {
             </button>
             <Link
               className='clean-link'
-              to={`/mail/?notemail=subject=${title}&body=${todos}`}
+              to={`/mail/notemail?subject=${title}&body=${todos}`}
             >
               <button onClick={console.log('l')}>
                 <img src='assets/SVG/mailfornotes.svg' alt='' />

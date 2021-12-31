@@ -124,7 +124,7 @@ export class NoteVideo extends React.Component {
             </button>
             <Link
               className='clean-link'
-              to={`/mail/?notemail=subject=${title}&body=${url}`}
+              to={`/mail/notemail?subject=${title}&body=${url}`}
             >
               <button onClick={console.log(',')}>
                 <img src='assets/SVG/mailfornotes.svg' alt='' />
@@ -133,32 +133,6 @@ export class NoteVideo extends React.Component {
           </div>
         </div>
       </div>
-
-      /* {isNoteEdited && (
-          <div className='note-preview img-note'>
-            <form onSubmit={this.onSubmit}>
-              <label htmlFor='title'>update img title</label>
-              <input
-                name='title'
-                id='title'
-                onChange={this.handleChange}
-                value={title}
-                type='text'
-              />
-
-              <label htmlFor='url'>update img url</label>
-              <input
-                name='url'
-                id='url'
-                onChange={this.handleChange}
-                value={url}
-                type='text'
-              />
-              <button>submit</button>
-            </form>
-            <button onClick={this.editNote}>go back </button>
-          </div>
-        )} */
     );
   }
 }
