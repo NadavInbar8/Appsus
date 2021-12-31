@@ -8,9 +8,24 @@ export class noteMail extends React.Component {
     labels: [],
   };
 
-  get searchParams() {
-    const urlSearchParams = URLSearchParams(this.props.location.search);
-    return urlSearchParams.get('notemail');
+  get subjectSearchParams() {
+    const urlSearchParams = new URLSearchParams(this.props.location.search);
+    return urlSearchParams.get('subject');
+  }
+  get bodySearchParams() {
+    const urlSearchParams = new URLSearchParams(this.props.location.search);
+    return urlSearchParams.get('body');
+  }
+  get mailToDisplay() {
+    const { subject, text } = this.state;
+    const noteSubject = this.subjectSearchParams;
+    const noteText = this.bodySearchParams;
+    this.setState({ subject: noteSubject, text: noteText });
+    console.log(noteSubject, noteText);
+  }
+
+  componentDidMount() {
+    this.mailToDisplay;
   }
 
   handleChange = ({ target }) => {
