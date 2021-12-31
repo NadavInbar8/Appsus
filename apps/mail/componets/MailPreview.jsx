@@ -6,6 +6,7 @@ export function MailPreview({
   onMoveToTrash,
   toggleStar,
   toggleRead,
+  onSendNote,
 }) {
   return (
     <div>
@@ -40,6 +41,11 @@ export function MailPreview({
             <button className='delete' onClick={onMoveToTrash}>
               move to trash
             </button>
+            <Link className='clean-link' to='/keep'>
+              <button className='send-note' onClick={onSendNote}>
+                send as a note
+              </button>
+            </Link>
           </div>
         </div>
       ) : (
