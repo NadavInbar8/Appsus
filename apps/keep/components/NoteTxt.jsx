@@ -106,7 +106,7 @@ export class NoteTxt extends React.Component {
               className='clean-link'
               to={`/mail/?notemail=subject=note&body=${txt}`}
             >
-              <button onClick={this.sendNote}>
+              <button onClick={console.log('m')}>
                 <img src='assets/SVG/mailfornotes.svg' alt='' />
               </button>
             </Link>

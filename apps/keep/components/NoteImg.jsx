@@ -1,4 +1,6 @@
 import { NoteService } from '../services/note.service.js';
+const { Link } = ReactRouterDOM;
+
 // ({ note, loadNotes });
 export class NoteImg extends React.Component {
   state = {
@@ -121,9 +123,14 @@ export class NoteImg extends React.Component {
                 {' '}
                 <img src='assets/SVG/trash.svg' alt='' />
               </button>
-              <button onClick={console.log}>
-                <img src='assets/SVG/mailfornotes.svg' alt='' />
-              </button>
+              <Link
+                className='clean-link'
+                to={`/mail/?notemail=subject=${title}&body=${url}`}
+              >
+                <button onClick={console.log('h')}>
+                  <img src='assets/SVG/mailfornotes.svg' alt='' />
+                </button>
+              </Link>
             </div>
           </div>
         </div>
