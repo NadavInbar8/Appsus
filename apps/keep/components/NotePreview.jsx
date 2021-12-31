@@ -4,7 +4,6 @@ import { NoteVideo } from './NoteVideo.jsx';
 import { NoteTodos } from './NoteTodos.jsx';
 
 export function NotePreview({ note, loadNotes }) {
-  //   console.log(note);
   switch (note.type) {
     case 'note-img':
       return <NoteImg loadNotes={loadNotes} note={note} />;
