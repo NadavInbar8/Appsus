@@ -127,7 +127,7 @@ export class NoteImg extends React.Component {
                 className='clean-link'
                 to={`/mail/notemail?subject=${title}&body=${url}`}
               >
-                <button onClick={console.log('h')}>
+                <button>
                   <img src='assets/SVG/mailfornotes.svg' alt='' />
                 </button>
               </Link>

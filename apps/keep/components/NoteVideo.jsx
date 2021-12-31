@@ -126,7 +126,7 @@ export class NoteVideo extends React.Component {
               className='clean-link'
               to={`/mail/notemail?subject=${title}&body=${url}`}
             >
-              <button onClick={console.log(',')}>
+              <button>
                 <img src='assets/SVG/mailfornotes.svg' alt='' />
               </button>
             </Link>
