@@ -13,21 +13,23 @@ export class MailApp extends React.Component {
   };
 
   componentDidMount() {
-    this.loadMails();
-  }
-
-  closeMails(mails) {
-    mails.forEach((mail) => {
-      mail.isOpen = false;
-    });
+    this.loadMails()
+      .then(() => {
+        let { mails } = this.state;
+        console.log('mounting');
+        mails.forEach((mail) => (mail.isOpen = false));
+        mailService.saveMails(mails);
+      })
+      .then(() => this.loadMails());
   }
 
   loadMails = () => {
     const { filterBy, folderFilter } = this.state;
     mailService.query(filterBy, folderFilter).then((mails) => {
-      this.closeMails(mails);
+      // this.closeMails(mails);
       this.setState({ mails });
     });
+    return Promise.resolve();
   };
   onSetFilter = (filterBy) => {
     console.log(filterBy);
@@ -40,10 +42,28 @@ export class MailApp extends React.Component {
   };
 
   togglePreview(mails, mailId) {
-    mails.map((mail) => {
+    mails.forEach((mail) => {
       if (mail.id === mailId) {
         mail.isOpen = !mail.isOpen;
         mail.isRead = true;
+        mailService.saveMails(mails);
+      }
+    });
+  }
+
+  toggleStar(mails, mailId) {
+    mails.forEach((mail) => {
+      if (mail.id === mailId) {
+        mail.star = !mail.star;
+        mailService.saveMails(mails);
+      }
+    });
+  }
+
+  toggleRead(mails, mailId) {
+    mails.forEach((mail) => {
+      if (mail.id === mailId) {
+        mail.isRead = !mail.isRead;
         mailService.saveMails(mails);
       }
     });
@@ -72,7 +92,40 @@ export class MailApp extends React.Component {
   };
 
   closeComposeMail = () => {
-    this.setState({ isNewMail: false });
+    this.setState({ isNewMail: false }, this.loadMails);
+  };
+
+  onSortMail = () => {
+    let sortedMails = [...this.state.mails].sort(function (x, y) {
+      return x.sentAt - y.sentAt;
+    });
+    if (this.state.mails[1] === sortedMails[1]) {
+      sortedMails = [...this.state.mails].sort(function (x, y) {
+        return y.sentAt - x.sentAt;
+      });
+    }
+    this.setState({ mails: sortedMails });
+  };
+
+  onTitleSort = () => {
+    let sortedMails = [...this.state.mails].sort(function (x, y) {
+      if (x.subject.toUpperCase() < y.subject.toUpperCase()) return -1;
+      if (x.subject.toUpperCase() > y.subject.toUpperCase()) return 1;
+      return 0;
+    });
+    if (this.state.mails[1] === sortedMails[1]) {
+      sortedMails = [...this.state.mails].sort(function (x, y) {
+        console.log(x.subject.toUpperCase());
+        if (x.subject.toUpperCase() > y.subject.toUpperCase()) {
+          return -1;
+        }
+        if (x.subject.toUpperCase() < y.subject.toUpperCase()) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    this.setState({ mails: sortedMails });
   };
 
   render() {
@@ -84,6 +137,9 @@ export class MailApp extends React.Component {
           onSetFilter={this.onSetFilter}
         />
 
+        <button onClick={this.onSortMail}>sort</button>
+        <button onClick={this.onTitleSort}>sort</button>
+
         <MailFolderList
           mails={mails}
           onFolderFilter={this.onFolderFilter}
@@ -92,6 +148,8 @@ export class MailApp extends React.Component {
 
         <MailList
           togglePreview={this.togglePreview}
+          toggleStar={this.toggleStar}
+          toggleRead={this.toggleRead}
           onMoveToTrash={this.onMoveToTrash}
           loadMails={this.loadMails}
           mails={mails}

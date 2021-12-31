@@ -20,9 +20,9 @@ export function MailFolderList({ mails, showUnreadCount, onFolderFilter }) {
         <li onClick={getFolderFilter} value='3'>
           Starred
         </li>
-        <li onClick={getFolderFilter} value='4'>
+        {/* <li onClick={getFolderFilter} value='4'>
           Trash
-        </li>
+        </li> */}
         <li onClick={getFolderFilter} value='5'>
           Sent
         </li>

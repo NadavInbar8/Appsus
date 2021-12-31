@@ -5,6 +5,7 @@ export const mailService = {
   query,
   saveMails,
   sendNewMail,
+  getMailById,
 };
 
 const KEY = 'mailsDb';
@@ -21,7 +22,6 @@ function query(filterBy = null, folderFilter = 0) {
     return axios
       .get('apps/mail/services/emails.json')
       .then((res) => {
-        console.log(res.data);
         _saveMailsToStorage(res.data);
         return res.data;
       })
@@ -31,41 +31,49 @@ function query(filterBy = null, folderFilter = 0) {
       });
   } else {
     console.log('from storage');
-    if (folderFilter === 0) {
-      let notTrash = mails.filter((mail) => mail.isTrash === false);
+
+    switch (folderFilter) {
+      case 1:
+        break;
+
+      default:
+        break;
+    }
+    const FilteredMails = _getFilteredMails(mails, filterBy);
+
+    if (folderFilter === 0 && !filterBy) {
+      let notTrash = FilteredMails.filter((mail) => mail.isTrash === false);
       return Promise.resolve(notTrash);
     }
     if (folderFilter === 1) {
-      let didRead = mails.filter(
+      let didRead = FilteredMails.filter(
         (mail) => mail.isRead === true && mail.isTrash === false
       );
       return Promise.resolve(didRead);
     }
     if (folderFilter === 2) {
-      let didntRead = mails.filter(
+      let didntRead = FilteredMails.filter(
         (mail) => mail.isRead === false && mail.isTrash === false
       );
       return Promise.resolve(didntRead);
     }
     if (folderFilter === 3) {
-      let isStar = mails.filter(
+      let isStar = FilteredMails.filter(
         (mail) => mail.star === true && mail.isTrash === false
       );
       return Promise.resolve(isStar);
     }
     if (folderFilter === 4) {
-      let isTrash = mails.filter((mail) => mail.isTrash === true);
+      let isTrash = FilteredMails.filter((mail) => mail.isTrash === true);
       return Promise.resolve(isTrash);
     }
     if (folderFilter === 5) {
-      let sent = mails.filter(
+      let sent = FilteredMails.filter(
         (mail) => mail.fromEmail === 'user@appsus.com' && mail.isTrash === false
       );
       return Promise.resolve(sent);
     }
-    const FilteredMails = _getFilteredMails(mails, filterBy);
     console.log(FilteredMails);
-
     return Promise.resolve(FilteredMails);
   }
 }
@@ -91,7 +99,6 @@ function sendNewMail(newMail) {
     console.log(queryMails);
     saveMails(queryMails);
   });
-  console.log(mails);
 }
 
 function saveMails(mails) {
@@ -99,7 +106,8 @@ function saveMails(mails) {
 }
 
 function _getFilteredMails(mails, filterBy) {
-  let { mailSearch } = filterBy;
+  let mailSearch = '';
+  if (filterBy) mailSearch = filterBy.mailSearch;
   if (mailSearch === '') {
     return mails;
   }
@@ -107,11 +115,18 @@ function _getFilteredMails(mails, filterBy) {
     if (mail.subject.toUpperCase().includes(mailSearch.toUpperCase())) {
       return mail;
     }
-    if (mail.body.toUpperCase().includes(mailSearch)) return mail;
-    if (mail.to.toUpperCase().includes(mailSearch)) return mail;
-    if (mail.from.toUpperCase().includes(mailSearch)) return mail;
+
+    if (mail.body.toUpperCase().includes(mailSearch.toUpperCase())) return mail;
+    if (mail.to.toUpperCase().includes(mailSearch.toUpperCase())) return mail;
+    if (mail.from.toUpperCase().includes(mailSearch.toUpperCase())) return mail;
   });
   return MailsFiltered;
+}
+
+function getMailById(mailId) {
+  const mails = _loadMailsFromStorage();
+  let mail = mails.find((mail) => mailId === mail.id);
+  return Promise.resolve(mail);
 }
 
 function _saveMailsToStorage(mails) {

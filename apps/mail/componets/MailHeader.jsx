@@ -14,6 +14,11 @@ export class MailHeader extends React.Component {
   getFilter = (ev) => {
     ev.preventDefault();
     this.props.onSetFilter(this.state);
+    this.clearForm();
+  };
+
+  clearForm = () => {
+    this.setState({ mailSearch: '' });
   };
 
   render() {
@@ -33,6 +38,7 @@ export class MailHeader extends React.Component {
                 name='mailSearch'
                 value={mailSearch}
                 onChange={this.handleChange}
+                onBlur={this.getFilter}
               />
               <button>submit</button>
             </form>
