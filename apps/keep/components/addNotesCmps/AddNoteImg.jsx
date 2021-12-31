@@ -43,9 +43,14 @@ export class AddNoteImg extends React.Component {
               value={url}
               placeholder='Enter img url'
             />
-            <button className='add-button'>
-              <img src='assets/SVG/add.svg' alt='' />
-            </button>{' '}
+            <Link
+              className='clean-link'
+              to={`/mail/?notemail=ComposeMail&subject=note&body=${txt}`}
+            >
+              <button onClick={this.sendNote}>
+                <img src='assets/SVG/mailfornotes.svg' alt='' />
+              </button>
+            </Link>
           </form>
         </div>
       </div>

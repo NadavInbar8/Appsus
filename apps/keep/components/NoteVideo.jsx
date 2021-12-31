@@ -1,5 +1,7 @@
 import { NoteService } from '../services/note.service.js';
 // ({ note, loadNotes })
+const { Link } = ReactRouterDOM;
+
 export class NoteVideo extends React.Component {
   state = {
     isNoteEdited: false,
@@ -120,9 +122,14 @@ export class NoteVideo extends React.Component {
             <button onClick={this.onDeleteNote}>
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log}>
-              <img src='assets/SVG/mailfornotes.svg' alt='' />
-            </button>
+            <Link
+              className='clean-link'
+              to={`/mail/?notemail=subject=${title}&body=${url}`}
+            >
+              <button onClick={this.sendNote}>
+                <img src='assets/SVG/mailfornotes.svg' alt='' />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

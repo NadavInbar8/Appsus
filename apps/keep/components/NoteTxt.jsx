@@ -1,5 +1,8 @@
 import { utilService } from '../../../js/services/util.service.js';
 import { NoteService } from '../services/note.service.js';
+
+const { Link } = ReactRouterDOM;
+
 // ({ note, loadNotes })
 export class NoteTxt extends React.Component {
   state = {
@@ -47,6 +50,10 @@ export class NoteTxt extends React.Component {
     NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
   };
 
+  sendNote = () => {
+    NoteService.sendNoteToMail(this.props.note);
+  };
+
   render() {
     const { isEditNote: isEditNote, txt, backgroundColor } = this.state;
     return (
@@ -57,6 +64,7 @@ export class NoteTxt extends React.Component {
       >
         <div className='preview-content'>
           <h2>note!</h2>
+
           {isEditNote ? (
             <input
               autoFocus
@@ -94,9 +102,14 @@ export class NoteTxt extends React.Component {
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log}>
-              <img src='assets/SVG/mailfornotes.svg' alt='' />
-            </button>
+            <Link
+              className='clean-link'
+              to={`/mail/?notemail=subject=note&body=${txt}`}
+            >
+              <button onClick={this.sendNote}>
+                <img src='assets/SVG/mailfornotes.svg' alt='' />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

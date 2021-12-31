@@ -1,5 +1,7 @@
 import { utilService } from '../../../js/services/util.service.js';
 import { NoteService } from '../services/note.service.js';
+const { Link } = ReactRouterDOM;
+
 // ({ note, loadNotes })
 export class NoteTodos extends React.Component {
   state = {
@@ -145,9 +147,14 @@ export class NoteTodos extends React.Component {
               {' '}
               <img src='assets/SVG/trash.svg' alt='' />
             </button>
-            <button onClick={console.log}>
-              <img src='assets/SVG/mailfornotes.svg' alt='' />
-            </button>
+            <Link
+              className='clean-link'
+              to={`/mail/?notemail=subject=${title}&body=${todos}`}
+            >
+              <button onClick={this.sendNote}>
+                <img src='assets/SVG/mailfornotes.svg' alt='' />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
