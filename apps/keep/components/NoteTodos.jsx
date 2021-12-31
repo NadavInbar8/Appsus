@@ -62,9 +62,12 @@ export class NoteTodos extends React.Component {
     NoteService.duplicateNote(this.props.note.id).then(this.props.loadNotes());
   };
 
-  toggleLine = (ev) => {
+  toggleLine = (ev, idx) => {
     ev.stopPropagation();
-    ev.target.style = 'text-decoration:line-through';
+    console.log(idx);
+    NoteService.toggleLine(this.props.note.id, idx).then(
+      this.props.loadNotes()
+    );
   };
 
   render() {
@@ -82,11 +85,14 @@ export class NoteTodos extends React.Component {
               <h2>{this.props.note.info.label}</h2>
               <ul>
                 {this.props.note.info.todos.map((todo, idx) => {
+                  let decoration = todo.doneAt ? 'line-through' : 'none';
+
                   return (
                     <li
+                      style={{ textDecoration: `${decoration}` }}
                       key={idx}
                       onClick={(ev) => {
-                        this.toggleLine(ev);
+                        this.toggleLine(ev, idx);
                       }}
                     >
                       {todo.txt}

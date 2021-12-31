@@ -33,10 +33,8 @@
   gap: 5px;
 }
 .preview-buttons input {
-  opacity: 1;
   position: absolute;
   z-index: 1;
-  /* transform: translate(0%); */
   opacity: 0;
   height: 30px;
   width: 30px;
@@ -44,10 +42,7 @@
 .paint-img {
   background-color: rgb(255, 249, 250);
   border-radius: 5px;
-}
-.paint-img:hover {
-  background-color: rgb(99, 46, 54);
-  cursor: pointer;
+  height: 30px;
 }
 
 .preview-buttons button {
@@ -79,6 +74,7 @@
 .video-note {
   justify-content: center;
 }
+
 .img-note img {
   max-width: 300px;
 }

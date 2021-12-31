@@ -66,11 +66,23 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
+// function getRandomColor() {
+//   var letters = '0123456789ABCDEF';
+//   var color = '#';
+//   for (var i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
+// #CEE5D0
+// #F3F0D7
+// #FED2AA
+// #FFBF86
+
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  let num = getRandomIntInclusive(1, 4);
+  if (num === 1) return '#FFBF86';
+  else if (num === 2) return '#CEE5D0';
+  else if (num === 3) return '#F3F0D7';
+  else if (num === 4) return '#FED2AA';
 }
