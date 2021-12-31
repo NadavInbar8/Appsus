@@ -3,6 +3,7 @@
 @import './mailHeader.css';
 @import './ComposeMail.css';
 @import './MailFolderList.css';
+@import './mailDetails.css';
 .mail-app {
   flex-wrap: wrap;
 }

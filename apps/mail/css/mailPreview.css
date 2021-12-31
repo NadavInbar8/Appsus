@@ -43,12 +43,19 @@
   font-weight: bold;
 }
 
-.delete {
+.preview-options {
   display: none;
   position: absolute;
   right: 0;
 }
-.mail-preview:hover .delete {
+.mail-preview:hover .preview-options {
   display: flex;
   transform: scale(1.1);
+}
+.star-preview img {
+  height: 25px;
+}
+
+.clickable {
+  width: 80%;
 }
