@@ -27,7 +27,7 @@ export function MailList({
               togglePreview(mails, mail.id);
               loadMails();
             }}
-            onMoveToTrash={() => onMoveToTrash(mails, mail.id)}
+            onMoveToTrash={() => onMoveToTrash(mail.id)}
           />
         );
       })}

@@ -26,7 +26,6 @@ export class MailApp extends React.Component {
   loadMails = () => {
     const { filterBy, folderFilter } = this.state;
     mailService.query(filterBy, folderFilter).then((mails) => {
-      // this.closeMails(mails);
       this.setState({ mails });
     });
     return Promise.resolve();
@@ -46,34 +45,46 @@ export class MailApp extends React.Component {
       if (mail.id === mailId) {
         mail.isOpen = !mail.isOpen;
         mail.isRead = true;
-        mailService.saveMails(mails);
       }
     });
+    mailService.saveMails(mails);
   }
 
   toggleStar(mails, mailId) {
     mails.forEach((mail) => {
       if (mail.id === mailId) {
         mail.star = !mail.star;
-        mailService.saveMails(mails);
       }
     });
+    mailService.saveMails(mails);
   }
 
   toggleRead(mails, mailId) {
     mails.forEach((mail) => {
       if (mail.id === mailId) {
         mail.isRead = !mail.isRead;
-        mailService.saveMails(mails);
       }
     });
+    mailService.saveMails(mails);
   }
 
-  onMoveToTrash = (mails, mailId) => {
-    mails.forEach((mail) => {
-      if (mail.id === mailId) mail.isTrash = true;
-    });
-    mailService.saveMails(mails);
+  onMoveToTrash = (mailId) => {
+    let mails = mailService.loadMails();
+    if (this.state.folderFilter === 4) {
+      mails.forEach((mail, idx) => {
+        if (mail.id === mailId) {
+          mails.splice(idx, 1);
+        }
+      });
+      mailService.saveMails(mails);
+    } else {
+      mails.forEach((mail) => {
+        if (mail.id === mailId) {
+          mail.isTrash = true;
+        }
+      });
+      mailService.saveMails(mails);
+    }
   };
 
   showUnreadCount(mails) {

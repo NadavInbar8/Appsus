@@ -6,13 +6,17 @@ export const mailService = {
   saveMails,
   sendNewMail,
   getMailById,
+  loadMails,
+  saveDraft,
 };
 
 const KEY = 'mailsDb';
+const TrashKEY = 'trashDB';
 const loggedinUser = {
   email: 'user@appsus.com',
   fullname: 'Nadav Inbar',
 };
+const drafts = [];
 // {mailSearch: ';lkj', filter: ''}
 function query(filterBy = null, folderFilter = 0) {
   let mails = _loadMailsFromStorage();
@@ -64,8 +68,8 @@ function query(filterBy = null, folderFilter = 0) {
       return Promise.resolve(isStar);
     }
     if (folderFilter === 4) {
-      let isTrash = FilteredMails.filter((mail) => mail.isTrash === true);
-      return Promise.resolve(isTrash);
+      let showTrash = FilteredMails.filter((mail) => mail.isTrash === true);
+      return Promise.resolve(showTrash);
     }
     if (folderFilter === 5) {
       let sent = FilteredMails.filter(
@@ -73,12 +77,12 @@ function query(filterBy = null, folderFilter = 0) {
       );
       return Promise.resolve(sent);
     }
-    console.log(FilteredMails);
     return Promise.resolve(FilteredMails);
   }
 }
 
 function sendNewMail(newMail) {
+  console.log(newMail);
   let mail = {
     id: utilService.makeId(),
     subject: newMail.subject,
@@ -86,7 +90,7 @@ function sendNewMail(newMail) {
     isRead: false,
     sentAt: Date.now(),
     star: false,
-    labels: [],
+    labels: newMail.labels,
     fromEmail: loggedinUser.email,
     to: newMail.to,
     from: loggedinUser.fullname,
@@ -96,13 +100,20 @@ function sendNewMail(newMail) {
 
   let mails = query(null).then((queryMails) => {
     queryMails.unshift(mail);
-    console.log(queryMails);
     saveMails(queryMails);
   });
 }
 
 function saveMails(mails) {
   _saveMailsToStorage(mails);
+}
+
+function loadMails() {
+  return _loadMailsFromStorage();
+}
+
+function saveDraft(draft) {
+  console.log(draft);
 }
 
 function _getFilteredMails(mails, filterBy) {
