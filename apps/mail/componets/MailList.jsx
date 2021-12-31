@@ -7,6 +7,7 @@ export function MailList({
   toggleStar,
   toggleRead,
   loadMails,
+  onSendNote,
 }) {
   return (
     <div className='mail-list'>
@@ -28,6 +29,7 @@ export function MailList({
               loadMails();
             }}
             onMoveToTrash={() => onMoveToTrash(mail.id)}
+            onSendNote={() => onSendNote(mail.subject, mail.body)}
           />
         );
       })}

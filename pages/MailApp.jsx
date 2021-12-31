@@ -3,6 +3,7 @@ import { MailList } from '../apps/mail/componets/MailList.jsx';
 import { MailHeader } from '../apps/mail/componets/MailHeader.jsx';
 import { MailFolderList } from '../apps/mail/componets/MailFolderList.jsx';
 import { ComposeMail } from '../apps/mail/componets/ComposeMail.jsx';
+import { NoteService } from '../apps/keep/services/note.service.js';
 
 export class MailApp extends React.Component {
   state = {
@@ -139,6 +140,12 @@ export class MailApp extends React.Component {
     this.setState({ mails: sortedMails });
   };
 
+  onSendNote = (subject, text) => {
+    let noteText = `${subject}: ${text}`;
+    let note = { txt: noteText };
+    NoteService.addNote('txt', note);
+  };
+
   render() {
     const { mails, filterBy, isNewMail } = this.state;
     return (
@@ -163,6 +170,7 @@ export class MailApp extends React.Component {
           toggleRead={this.toggleRead}
           onMoveToTrash={this.onMoveToTrash}
           loadMails={this.loadMails}
+          onSendNote={this.onSendNote}
           mails={mails}
         />
 
