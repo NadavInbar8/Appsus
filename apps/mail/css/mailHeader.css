@@ -18,4 +18,17 @@
 }
 
 .searchMail {
+  border: none;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  height: 2.5rem;
+  width: 20vw;
+  border-radius: 8px;
+}
+.compose-span {
+  padding: 8px;
+}
+.new-mail {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

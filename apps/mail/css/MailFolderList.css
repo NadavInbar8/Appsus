@@ -1,7 +1,39 @@
 .mail-folder-list {
   width: 10%;
   padding: 10px;
+  justify-content: center;
+  align-items: center;
   -webkit-box-shadow: 1px 0px 10px -10px #000000;
   box-shadow: 1px 0px 10px -10px #000000;
   background-color: var(--cp1);
+}
+
+.mail-folder-list > * {
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+}
+.mail-folder-list li {
+  list-style: none;
+  margin: 8px;
+}
+.mail-folder-list ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.sort-labels {
+  justify-content: space-around;
+}
+
+.mail-sortby {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.mail-sortby h4 {
+  margin: 3px;
 }

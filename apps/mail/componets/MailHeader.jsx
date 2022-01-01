@@ -43,8 +43,12 @@ export class MailHeader extends React.Component {
               />
             </form>
           </div>
-          <div className='new-mail' onClick={this.props.composeMail}>
-            New Mail
+          <div
+            className='new-mail flex-column'
+            onClick={this.props.composeMail}
+          >
+            <span className='compose-span'>Compose Mail</span>
+            <img src='assets/SVG/plus.svg' alt='plus' />
           </div>
         </div>
       </div>

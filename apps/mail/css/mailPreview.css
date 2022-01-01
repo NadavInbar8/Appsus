@@ -64,7 +64,6 @@
 .mail-preview:hover {
   -webkit-box-shadow: 0px 0px 4px 0px #000000;
   box-shadow: 0px 0px 4px 0px #000000;
-  z-index: 2;
 }
 .star-preview img {
   height: 25px;
@@ -72,4 +71,12 @@
 
 .clickable {
   width: 80%;
+}
+.label-span {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  margin: 2px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 1px 0px #000000;
 }

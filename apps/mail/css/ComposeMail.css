@@ -9,7 +9,6 @@
   border-top-right-radius: 8px;
 }
 .new-mail-header {
-  display: flex;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   height: 5%;
@@ -20,4 +19,5 @@
   letter-spacing: 1px;
   align-items: center;
   padding: 10px;
+  justify-content: space-between;
 }

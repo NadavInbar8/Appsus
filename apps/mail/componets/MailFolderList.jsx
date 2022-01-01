@@ -13,8 +13,17 @@ export function MailFolderList({
   };
   return (
     <div className='mail-folder-list flex-colunm'>
-      <button onClick={onSortMail}>sort by date</button>
-      <button onClick={onTitleSort}>sort by name</button>
+      <div className='mail-sortby flex-colunm'>
+        <h4>Sort by:</h4>
+        <div className='sort-labels flex'>
+          <p name='sort-by-date' height='30px' onClick={onSortMail}>
+            Date
+          </p>
+          <p name='sort-by-name' height='30px' onClick={onTitleSort}>
+            Name
+          </p>
+        </div>
+      </div>
       <ul>
         <li onClick={getFolderFilter} value='0'>
           Inbox

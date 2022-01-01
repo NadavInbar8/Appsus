@@ -35,7 +35,13 @@ export function MailPreview({
                 ? mail.body.slice(0, 120) + `...`
                 : mail.body}
             </div>
-            <div className='labels'>{mail.labels} </div>
+            {mail.labels.map((label) => {
+              return (
+                <span key={label} className='label-span'>
+                  {label}
+                </span>
+              );
+            })}
           </div>
           <div className='preview-options'>
             <Link className='clean-link' to={`/mail/${mail.id}`}>
