@@ -3,6 +3,9 @@
 @import '../apps/mail/css/mail.css';
 @import './parts/helpers.css';
 @import '../apps/keep/css/notesMain.css';
+@import '../css/components/app-home.css';
+@import '../css//components/about.css';
+
 * {
   box-sizing: border-box;
   font-family: 'Raleway', 'FiraSans', cursive;
