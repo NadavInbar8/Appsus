@@ -17,15 +17,17 @@
 
 .nav-modal {
   text-align: center;
-  height: 250px;
+  height: 200px;
   width: 250px;
   background-color: var(--cp2);
   position: absolute;
-  left: 75%;
-  top: 5%;
+  right: 5%;
+  border-radius: 15px;
+  top: 7%;
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  transition: 0.3s;
 }
 .nav-modal img {
   margin-top: 10px;

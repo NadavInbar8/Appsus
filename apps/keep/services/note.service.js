@@ -14,6 +14,7 @@ export const NoteService = {
   sendToTop,
   duplicateNote,
   sendNoteToMail,
+  toggleLine,
 };
 
 const KEY = 'NotesDB';
@@ -43,7 +44,7 @@ function query(filterBy = null) {
 
 function _getNoteById(notes, id) {
   let findNote = notes.find((note) => note.id === id);
-  console.log(findNote);
+  // console.log(findNote);
   return findNote;
 }
 
@@ -89,6 +90,19 @@ function sendToTop(noteId) {
   let noteToTopIdx = notes.findIndex((note) => note.id === noteId);
   notes.splice(noteToTopIdx, 1);
   notes.unshift(noteToTop);
+  _saveNotesToStorage(notes);
+  return Promise.resolve();
+}
+
+function toggleLine(noteId, idx) {
+  let notes = _loadNotesFromStorage();
+  let noteToChange = _getNoteById(notes, noteId);
+  console.log(noteToChange.info.todos[idx].doneAt);
+  if (noteToChange.info.todos[idx].doneAt === null)
+    noteToChange.info.todos[idx].doneAt = Date.now();
+  else if (noteToChange.info.todos[idx].doneAt)
+    noteToChange.info.todos[idx].doneAt = null;
+
   _saveNotesToStorage(notes);
   return Promise.resolve();
 }
