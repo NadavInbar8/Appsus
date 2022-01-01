@@ -7,7 +7,6 @@ export const mailService = {
   sendNewMail,
   getMailById,
   loadMails,
-  saveDraft,
 };
 
 const KEY = 'mailsDb';
@@ -16,8 +15,6 @@ const loggedinUser = {
   email: 'user@appsus.com',
   fullname: 'Nadav Inbar',
 };
-const drafts = [];
-// {mailSearch: ';lkj', filter: ''}
 function query(filterBy = null, folderFilter = 0) {
   let mails = _loadMailsFromStorage();
 
@@ -110,10 +107,6 @@ function saveMails(mails) {
 
 function loadMails() {
   return _loadMailsFromStorage();
-}
-
-function saveDraft(draft) {
-  console.log(draft);
 }
 
 function _getFilteredMails(mails, filterBy) {

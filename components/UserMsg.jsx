@@ -15,7 +15,6 @@ export class UserMsg extends React.Component {
   }
 
   onAutoClose = () => {
-    console.log(this.state);
     this.timeoutId = setTimeout(() => {
       this.onCloseMsg();
     }, 3000);

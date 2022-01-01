@@ -27,7 +27,6 @@
 .text-preview {
 }
 .expand-preview {
-  background-color: var(--cp4);
   height: 300px;
 }
 .expand-preview-cell {
@@ -36,7 +35,6 @@
   overflow: visible;
 }
 .expand-preview-cell-content {
-  background-color: var(--cp4);
   position: absolute;
   top: 0;
   height: 300px;

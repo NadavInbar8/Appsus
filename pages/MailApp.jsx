@@ -32,12 +32,10 @@ export class MailApp extends React.Component {
     return Promise.resolve();
   };
   onSetFilter = (filterBy) => {
-    console.log(filterBy);
     this.setState({ filterBy }, this.loadMails);
   };
 
   onFolderFilter = (folderFilter) => {
-    console.log(folderFilter);
     this.setState({ folderFilter: folderFilter }, this.loadMails);
   };
 
@@ -99,7 +97,6 @@ export class MailApp extends React.Component {
   }
 
   composeMail = () => {
-    console.log(this.state.isNewMail);
     this.setState({ isNewMail: true }, this.loadMails);
   };
 
@@ -127,7 +124,6 @@ export class MailApp extends React.Component {
     });
     if (this.state.mails[1] === sortedMails[1]) {
       sortedMails = [...this.state.mails].sort(function (x, y) {
-        console.log(x.subject.toUpperCase());
         if (x.subject.toUpperCase() > y.subject.toUpperCase()) {
           return -1;
         }

@@ -77,17 +77,17 @@ export function MailPreview({
     </tr>
   ) : (
     <tr className='expand-preview'>
-      <td>
+      <td className='star-preview' onClick={toggleStar}>
         {!mail.star ? (
-          <img src='assets/SVG/notFilledStar.svg' alt='star' />
+          <img src='../../assets/SVG/notFilledStar.svg' alt='star' />
         ) : (
-          <img src='assets/SVG/filledStar.svg' alt='star' />
+          <img src='../../assets/SVG/filledStar.svg' alt='star' />
         )}
       </td>
       <td className='from-preview' onClick={togglePreview}>
         {mail.from}
       </td>
-      <td className='expand-preview-cell' onClick={toggleStar}>
+      <td className='expand-preview-cell' onClick={togglePreview}>
         <div className='expand-preview-cell-content'>
           <div onClick={togglePreview} className='from-preview-open flex'>
             <h3>
