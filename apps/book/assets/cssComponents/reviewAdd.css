@@ -1,0 +1,53 @@
+.review-inputs {
+  position: absolute;
+
+  left: 70%;
+  width: 25vw;
+  border: black solid 3px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgb(226, 197, 202);
+  font-size: 20px;
+}
+
+.review-inputs form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.review-inputs button {
+  width: 60px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.review-inputs input {
+  font-size: 30px;
+  height: 50px;
+}
+.review-inputs textarea {
+  font-size: 25px;
+  height: 50px;
+}
+.review-inputs select {
+  font-size: 25px;
+  height: 50px;
+}
+
+.reviews {
+  position: absolute;
+}
+.review {
+  border-radius: 20px;
+  background-color: rgb(166, 226, 166);
+  margin-bottom: 20px;
+  margin-inline-start: 50px;
+  border: black solid 2px;
+  height: 200px;
+  width: 30vw;
+}
+
+.review .review-content {
+  margin-inline-start: 65px;
+}
