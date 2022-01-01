@@ -1,7 +1,6 @@
 .header {
   margin: 0;
   height: 10vh;
-  background-color: var(--cp3);
 }
 .main-header {
   width: 90%;
@@ -17,19 +16,24 @@
 
 .nav-modal {
   text-align: center;
-  height: 200px;
-  width: 250px;
-  background-color: var(--cp2);
+  /* height: 200px; */
+  /* width: 250px; */
+  background-color: var(--cp4);
   position: absolute;
-  right: 5%;
-  border-radius: 15px;
-  top: 7%;
+  border-radius: var(--size-2);
+  top: var(--size-24);
+  right: var(--size-16);
+  padding: var(--size-3);
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   transition: 0.3s;
+  gap: var(--size-4);
 }
 .nav-modal img {
-  margin-top: 10px;
-  height: 60px;
+  height: var(--size-8);
+  width: var(--size-8);
+  transition: ease-in-out 0.3s all;
+}
+.nav-modal img:hover {
 }

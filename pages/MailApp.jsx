@@ -150,33 +150,36 @@ export class MailApp extends React.Component {
     const { mails, filterBy, isNewMail } = this.state;
     return (
       <div className='mail-app flex'>
-        <MailHeader
-          composeMail={this.composeMail}
-          onSetFilter={this.onSetFilter}
-          closeComposeMail={this.closeComposeMail}
-        />
+        <div className='header-mail'>
+          <MailHeader
+            composeMail={this.composeMail}
+            onSetFilter={this.onSetFilter}
+            closeComposeMail={this.closeComposeMail}
+          />
+        </div>
+        <div className='body-mail flex'>
+          <MailFolderList
+            mails={mails}
+            onFolderFilter={this.onFolderFilter}
+            showUnreadCount={this.showUnreadCount}
+          />
 
-        <MailFolderList
-          mails={mails}
-          onFolderFilter={this.onFolderFilter}
-          showUnreadCount={this.showUnreadCount}
-          onSortMail={this.onSortMail}
-          onTitleSort={this.onTitleSort}
-        />
+          <MailList
+            togglePreview={this.togglePreview}
+            toggleStar={this.toggleStar}
+            toggleRead={this.toggleRead}
+            onMoveToTrash={this.onMoveToTrash}
+            loadMails={this.loadMails}
+            onSendNote={this.onSendNote}
+            onSortMail={this.onSortMail}
+            onTitleSort={this.onTitleSort}
+            mails={mails}
+          />
 
-        <MailList
-          togglePreview={this.togglePreview}
-          toggleStar={this.toggleStar}
-          toggleRead={this.toggleRead}
-          onMoveToTrash={this.onMoveToTrash}
-          loadMails={this.loadMails}
-          onSendNote={this.onSendNote}
-          mails={mails}
-        />
-
-        {isNewMail ? (
-          <ComposeMail closeComposeMail={this.closeComposeMail} />
-        ) : null}
+          {isNewMail ? (
+            <ComposeMail closeComposeMail={this.closeComposeMail} />
+          ) : null}
+        </div>
       </div>
     );
   }

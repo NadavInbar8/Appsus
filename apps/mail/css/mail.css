@@ -5,12 +5,5 @@
 @import './MailFolderList.css';
 @import './mailDetails.css';
 .mail-app {
-  flex-wrap: wrap;
+  flex-flow: column;
 }
-
-/* :root {
-  --cp1: #f8f7e8;
-  --cp2: #cee5d0;
-  --cp3: #fed2aa;
-  --cp4: #ffbf86;
-} */

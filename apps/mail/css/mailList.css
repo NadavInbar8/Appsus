@@ -1,3 +1,8 @@
 .mail-list {
-  width: 89%;
+  width: 100%;
+  white-space: nowrap;
+}
+th {
+  text-align: start;
+  padding: var(--size-4);
 }

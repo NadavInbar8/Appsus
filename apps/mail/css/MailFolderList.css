@@ -5,17 +5,12 @@
   align-items: center;
   -webkit-box-shadow: 1px 0px 10px -10px #000000;
   box-shadow: 1px 0px 10px -10px #000000;
-  background-color: var(--cp1);
 }
 
 .mail-folder-list > * {
   margin: 8px;
   justify-content: center;
   align-items: center;
-}
-.mail-folder-list li {
-  list-style: none;
-  margin: 8px;
 }
 .mail-folder-list ul {
   display: flex;
@@ -24,7 +19,22 @@
   align-items: center;
   padding: 0;
 }
-
+.mail-folder-list li {
+  list-style: none;
+  width: 100%;
+  margin-right: var(--size-2);
+  padding: var(--size-1) var(--size-2);
+  transition: 0.2s ease-in-out all;
+}
+.mail-folder-list li:hover {
+  border-radius: 8px;
+  background-color: var(--cp4);
+  color: var(--cp2);
+}
+.mail-folder-list li:active {
+  border-radius: 8px;
+  background-color: var(--cp4-d) !important;
+}
 .sort-labels {
   justify-content: space-around;
 }
