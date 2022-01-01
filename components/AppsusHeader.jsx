@@ -1,4 +1,4 @@
-const { NavLink, withRouter } = ReactRouterDOM;
+const { NavLink, withRouter, Link } = ReactRouterDOM;
 
 export class AppsusHeader extends React.Component {
   state = {
@@ -14,12 +14,14 @@ export class AppsusHeader extends React.Component {
       <div className='header'>
         <div className='main-header flex'>
           <div className='logo'>
-            <img
-              width='auto'
-              height='auto'
-              src='./assets/SVG/logo.svg'
-              alt='logoSvg'
-            />
+            <Link to='/'>
+              <img
+                width='auto'
+                height='auto'
+                src='./assets/SVG/logo.svg'
+                alt='logoSvg'
+              />
+            </Link>
           </div>
           <div className='apps-menu'>
             <img

@@ -10,6 +10,7 @@ import { AppsusAbout } from './pages/AppsusAbout.jsx';
 import { AppsusHeader } from './components/AppsusHeader.jsx';
 import { AppsusFooter } from './components/AppsusFooter.jsx';
 import { noteMail } from './apps/mail/componets/noteMail.jsx';
+import { BookDetails } from './apps/book/Pages/BookDetails.jsx';
 
 /////////// React Router ///////////
 
@@ -28,7 +29,8 @@ export function App() {
 
         <main>
           <Switch>
-            <Route component={BookApp} path='/book' />
+            <Route component={BookDetails} path='/books/:bookId' />
+            <Route component={BookApp} path='/books' />
             <Route component={noteMail} path='/mail/notemail' />
             <Route component={MailDetails} path='/mail/:mailId' />
             <Route component={MailApp} path='/mail' />
