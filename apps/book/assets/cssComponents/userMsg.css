@@ -1,0 +1,23 @@
+.user-msg {
+  text-align: center;
+  height: 150px;
+  width: 150px;
+  position: fixed;
+  left: 80%;
+  top: 10%;
+  border-radius: 15px;
+  transition: 0.6s;
+  z-index: 10;
+}
+
+.happy {
+  background-color: rgb(136, 240, 136);
+}
+
+.sad {
+  background-color: rgb(240, 136, 136);
+}
+
+.sad {
+  background-color: rgb(238, 13, 13);
+}

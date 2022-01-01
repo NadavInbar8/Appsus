@@ -1,6 +1,6 @@
 ///////////   Imports ///////////
 
-import { BookApp } from './apps/book/BookApp.jsx';
+import { BookApp } from './pages/BookApp.jsx';
 import { MailApp } from './pages/MailApp.jsx';
 import { MailDetails } from './apps/mail/pages/MailDetails.jsx';
 import { KeepApp } from './pages/KeepApp.jsx';

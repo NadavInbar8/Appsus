@@ -1,0 +1,24 @@
+@import './cssComponents/bookList.css';
+@import './cssComponents/bookDetails.css';
+@import './cssComponents/longTxt.css';
+@import './cssComponents/filterInputs.css';
+@import './cssComponents/home.css';
+@import './cssComponents/about.css';
+@import './cssComponents/header.css';
+@import './cssComponents/reviewAdd.css';
+@import './cssComponents/userMsg.css';
+
+body {
+  background-color: rgb(221, 240, 234);
+  margin: 0 auto;
+}
+
+footer {
+  height: 20vh;
+  background-color: rgb(255, 153, 127);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

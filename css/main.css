@@ -6,6 +6,7 @@
 @import '../css/components/app-home.css';
 @import '../css//components/about.css';
 
+@import '../apps//book/assets/booksMain.css';
 * {
   box-sizing: border-box;
   font-family: 'Raleway', 'FiraSans', cursive;
