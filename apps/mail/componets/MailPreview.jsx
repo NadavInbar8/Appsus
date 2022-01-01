@@ -13,9 +13,9 @@ export function MailPreview({
     <tr className={mail.isRead ? 'mail-preview' : 'mail-preview bold '}>
       <td className='star-preview' onClick={toggleStar}>
         {!mail.star ? (
-          <img src='../../../assets/SVG/notFilledStar.svg' alt='star' />
+          <img src='../../assets/SVG/notFilledStar.svg' alt='star' />
         ) : (
-          <img src='../../../assets/SVG/filledStar.svg' alt='star' />
+          <img src='../../assets/SVG/filledStar.svg' alt='star' />
         )}
       </td>
       <td className='from-preview' onClick={togglePreview}>
