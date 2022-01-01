@@ -1,4 +1,10 @@
-export function MailFolderList({ mails, showUnreadCount, onFolderFilter }) {
+export function MailFolderList({
+  mails,
+  showUnreadCount,
+  onFolderFilter,
+  onTitleSort,
+  onSortMail,
+}) {
   let percent = 100;
   percent = showUnreadCount(mails);
   const getFolderFilter = (ev) => {
@@ -7,6 +13,8 @@ export function MailFolderList({ mails, showUnreadCount, onFolderFilter }) {
   };
   return (
     <div className='mail-folder-list flex-colunm'>
+      <button onClick={onSortMail}>sort by date</button>
+      <button onClick={onTitleSort}>sort by name</button>
       <ul>
         <li onClick={getFolderFilter} value='0'>
           Inbox

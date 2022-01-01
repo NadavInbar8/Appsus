@@ -153,15 +153,15 @@ export class MailApp extends React.Component {
         <MailHeader
           composeMail={this.composeMail}
           onSetFilter={this.onSetFilter}
+          closeComposeMail={this.closeComposeMail}
         />
-
-        <button onClick={this.onSortMail}>sort</button>
-        <button onClick={this.onTitleSort}>sort</button>
 
         <MailFolderList
           mails={mails}
           onFolderFilter={this.onFolderFilter}
           showUnreadCount={this.showUnreadCount}
+          onSortMail={this.onSortMail}
+          onTitleSort={this.onTitleSort}
         />
 
         <MailList

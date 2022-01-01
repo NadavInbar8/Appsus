@@ -5,13 +5,32 @@
 @import '../apps/keep/css/notesMain.css';
 * {
   box-sizing: border-box;
+  font-family: 'Raleway', 'FiraSans', cursive;
 }
 
 body {
   margin: 0 auto;
+  background-color: var(--cp1);
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url(../assets/fonts/Raleway/Raleway-Medium.ttf);
+}
+@font-face {
+  font-family: 'Raleway-Bold';
+  src: url(../assets/fonts/Raleway/Raleway-ExtraBold.ttf);
+}
+@font-face {
+  font-family: 'FiraSans';
+  src: url(../assets/fonts/FiraSans/FiraSans-Black.ttf);
+}
+@font-face {
+  font-family: 'FiraSans-Bold';
+  src: url(../assets/fonts/FiraSans/FiraSans-Bold.ttf);
 }
 :root {
-  --cp1: #f3f0d7;
+  --cp1: #fffdf0;
   --cp2: #cee5d0;
   --cp3: #fed2aa;
   --cp4: #ffbf86;

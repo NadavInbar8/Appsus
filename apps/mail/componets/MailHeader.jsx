@@ -31,16 +31,16 @@ export class MailHeader extends React.Component {
           </div>
           <div className='search-mail'>
             <form onSubmit={this.getFilter} className='mail-filter'>
-              <label htmlFor='searchMail'>search mail:</label>
               <input
                 type='text'
                 id='searchMail'
                 name='mailSearch'
+                className='searchMail'
+                placeholder='Search Mail'
                 value={mailSearch}
                 onChange={this.handleChange}
                 onBlur={this.getFilter}
               />
-              <button>submit</button>
             </form>
           </div>
           <div className='new-mail' onClick={this.props.composeMail}>

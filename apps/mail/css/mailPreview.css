@@ -5,6 +5,8 @@
   max-height: 55px;
   width: 100%;
   position: relative;
+  background-color: var(--cp1);
+  justify-items: center;
 }
 
 .mail-preview > * {
@@ -40,17 +42,29 @@
 }
 
 .bold {
-  font-weight: bold;
+  font-family: 'Raleway-Bold';
+  font-weight: 1000;
+  background-color: var(--cp1);
 }
 
 .preview-options {
   display: none;
   position: absolute;
   right: 0;
+  margin: 2px;
+}
+.preview-options > * {
+  margin: 3px;
 }
 .mail-preview:hover .preview-options {
   display: flex;
   transform: scale(1.1);
+  align-items: center;
+}
+.mail-preview:hover {
+  -webkit-box-shadow: 0px 0px 4px 0px #000000;
+  box-shadow: 0px 0px 4px 0px #000000;
+  z-index: 2;
 }
 .star-preview img {
   height: 25px;
