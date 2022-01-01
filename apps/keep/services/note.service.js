@@ -155,7 +155,7 @@ function updateTxtNote(noteId, txt) {
 function updateTodosNote(noteId, updatedTodo) {
   let todoArray = updatedTodo.todos.split(',');
   let todoWithText = todoArray.map((todo) => {
-    return { txt: todo, doneAt: Date.now() };
+    return { txt: todo, doneAt: null };
   });
   let notes = _loadNotesFromStorage();
   let noteUpdated = _getNoteById(notes, noteId);
