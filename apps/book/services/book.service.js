@@ -20,17 +20,12 @@ function query(filterBy = null) {
 
   if (!books || !books.length) {
     console.log('from server');
-    var r = new XMLHttpRequest();
-    r.open('GET', './sprint3/apps/book/services/books.json', true);
-    r.onreadystatechange = function () {
-      if (r.readyState != 4 || r.status != 200) return;
-      books = JSON.parse(r.responseText);
+    return axios.get('apps/book/services/books.json').then((res) => {
+      books = res.data;
       console.log(books);
       _saveBooksToStorage(books);
-    };
-    r.send();
-    console.log(books);
-    return Promise.resolve(books);
+      return Promise.resolve(books);
+    });
   } else {
     console.log('from storage');
     if (!filterBy) return Promise.resolve(books);
