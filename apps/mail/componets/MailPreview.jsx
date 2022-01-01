@@ -109,9 +109,9 @@ export function MailPreview({
 
   //   <td className='star-preview' onClick={toggleStar}>
   //     {!mail.star ? (
-  //       <img src='../../../assets/SVG/notFilledStar.svg' alt='star' />
+  //       <img src='assets/SVG/notFilledStar.svg' alt='star' />
   //     ) : (
-  //       <img src='../../../assets/SVG/filledStar.svg' alt='star' />
+  //       <img src='assets/SVG/filledStar.svg' alt='star' />
   //     )}
   //   </td>
   //   <td className='clickable flex' onClick={togglePreview}>
