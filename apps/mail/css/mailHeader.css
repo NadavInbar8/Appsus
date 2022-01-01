@@ -1,7 +1,9 @@
 .mail-header {
   height: 8vh;
-  background-color: rgb(229, 143, 143);
+  background-color: var(--cp1);
   width: 100%;
+  -webkit-box-shadow: inset 0px -10px 0px -20px #000000;
+  box-shadow: inset 0px -10px 0px -20px #000000;
 }
 .mail-main-header {
   height: 100%;
@@ -13,4 +15,7 @@
 
 .mail-header img {
   height: 50px;
+}
+
+.searchMail {
 }

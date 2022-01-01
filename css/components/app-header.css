@@ -1,13 +1,12 @@
 .header {
   margin: 0;
   height: 10vh;
-  background-color: #ffbf86;
+  background-color: var(--cp3);
 }
 .main-header {
   width: 90%;
   height: 100%;
   margin: auto;
-  background-color: #ffbf86;
   justify-content: space-between;
   align-items: center;
 }
@@ -20,7 +19,7 @@
   text-align: center;
   height: 250px;
   width: 250px;
-  background-color: rgb(255, 187, 0);
+  background-color: var(--cp2);
   position: absolute;
   left: 75%;
   top: 5%;

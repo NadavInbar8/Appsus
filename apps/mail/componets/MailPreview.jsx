@@ -25,27 +25,52 @@ export function MailPreview({
           </div>
           <div className='clickable flex' onClick={togglePreview}>
             <div className='from-preview'>{mail.from}</div>
-            <div className='subject-preview'>{mail.subject}</div>
+            <div className='subject-preview'>
+              {mail.subject.length > 20
+                ? mail.subject.slice(0, 20) + `...`
+                : mail.subject}
+            </div>
             <div className='text-preview'>
-              {mail.body > 100 ? mail.body.slice(0, 30) : mail.body}
+              {mail.body.length > 120
+                ? mail.body.slice(0, 120) + `...`
+                : mail.body}
             </div>
             <div className='labels'>{mail.labels} </div>
           </div>
           <div className='preview-options'>
             <Link className='clean-link' to={`/mail/${mail.id}`}>
-              Expand
+              <img src='assets/SVG/expand.svg' alt='expand' />
             </Link>
-            <button onClick={toggleRead}>
-              {mail.isRead ? 'mark as unread' : 'mark as read'}
-            </button>
-            <button className='delete' onClick={onMoveToTrash}>
-              move to trash
-            </button>
-            <Link className='clean-link' to='/keep'>
-              <button className='send-note' onClick={onSendNote}>
-                send as a note
-              </button>
-            </Link>
+            {mail.isRead ? (
+              <img
+                src='assets/SVG/markAsUnread.svg'
+                alt='mark as unread'
+                onClick={toggleRead}
+                height='22px'
+              />
+            ) : (
+              <img
+                src='assets/SVG/markAsRead.svg'
+                alt='mark as read'
+                onClick={toggleRead}
+                height='22px'
+              />
+            )}
+            <img
+              className='delete'
+              src='assets/SVG/moveToTrash.svg'
+              alt='Trash'
+              height='20px'
+              onClick={onMoveToTrash}
+            />
+            {/* <Link className='clean-link' to='/keep'> */}
+            <img
+              src='assets/SVG/sendAsANote.svg'
+              alt='send as a note'
+              height='20px'
+              onClick={onSendNote}
+            />
+            {/* </Link> */}
           </div>
         </div>
       ) : (
