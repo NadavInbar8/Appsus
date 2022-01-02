@@ -38,7 +38,9 @@ export class ComposeMail extends React.Component {
       <div className='compose-mail flex-column'>
         <div className='new-mail-header flex'>
           <span>New message</span>
-          <span onClick={this.props.closeComposeMail}>&#x2715;</span>
+          <span className='close' onClick={this.props.closeComposeMail}>
+            &#x2715;
+          </span>
         </div>
         <form onSubmit={this.onSendMail}>
           <div className='to-subject flex-column'>

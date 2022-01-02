@@ -37,3 +37,6 @@
 .ComposeSend:active {
   background-color: var(--cp4-d);
 }
+.close {
+  cursor: pointer;
+}
