@@ -30,7 +30,7 @@ export function App() {
         <main>
           <Switch>
             <Route component={BookDetails} path='/books/:bookId' />
-            <Route component={BookApp} path='/book' />
+            <Route component={BookApp} path='/books' />
             <Route component={noteMail} path='/mail/notemail' />
             <Route component={MailDetails} path='/mail/:mailId' />
             <Route component={MailApp} path='/mail' />

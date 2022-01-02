@@ -18,7 +18,7 @@ export function AppsusHome() {
           <img src='assets/SVG/keep.svg' alt='' />
         </Link>
 
-        <Link to='/book'>
+        <Link to='/books'>
           <img src='assets/SVG/book.svg' alt='' />
         </Link>
 

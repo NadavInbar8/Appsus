@@ -47,7 +47,7 @@ export class AppsusHeader extends React.Component {
                 alt=''
               />
             </NavLink>
-            <NavLink to='/book'>
+            <NavLink to='/books'>
               <img
                 onClick={this.toggleModal}
                 src='./assets/SVG/book.svg'
