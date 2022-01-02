@@ -60,6 +60,7 @@ export class ComposeMail extends React.Component {
               value={text}
               onChange={this.handleChange}
               name='text'
+              className='textArea'
             ></textarea>
             <div className='label-inputs flex'>
               <input
@@ -108,7 +109,9 @@ export class ComposeMail extends React.Component {
             </div>
 
             <div className='send'>
-              <button onClick={this.onSendMail}>Send</button>
+              <div className='ComposeSend' onClick={this.onSendMail}>
+                Send
+              </div>
             </div>
           </div>
         </form>

@@ -7,6 +7,7 @@
   right: 100px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  color: white;
 }
 .new-mail-header {
   border-top-left-radius: 8px;
@@ -20,4 +21,19 @@
   align-items: center;
   padding: 10px;
   justify-content: space-between;
+}
+.textArea {
+  height: 730px;
+}
+.ComposeSend {
+  background-color: var(--cp4);
+  width: fit-content;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.ComposeSend:active {
+  background-color: var(--cp4-d);
 }
